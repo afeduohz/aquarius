@@ -1,0 +1,467 @@
+"*"
+"(String * times(Int))"
+
+(let x = "123")
+(assert: ((x * 0) == "") "string * parameter =0 should return new empty string.")
+(assert: ((x * -1) == "") "string * parameter <0 should return new empty string.")
+(assert: ((x * 3) == "123123123") "string * parameter >0 should return new string that repeat N times.")
+
+"+"
+"(String + N(...*))"
+
+(let x = "123")
+(assert: ((x + "2" 1) == "12321") "string + parameters should be converted to string.")
+(assert: ((x +) == x) "string + no parameter should eql to itself.")
+
+"<<"
+"(String << N(...*))"
+
+(let x = "123")
+(let y = (x << 2 "ok" "fi" 1))
+(assert: (y == "1232okfi1") "string << append all parameters of any types.")
+
+">>"
+"(String >> N(...*))"
+
+(let x = "123")
+(let y = (x >> 2 true false nil))
+(assert: (y == "2truefalsenil123") "string >> prepend all parameters of any types.")
+
+"capitalize"
+"(String capitalize)"
+
+(let x = "abCDe fg 123!")
+(let y = ( x capitalize ))
+(assert: (y == "Abcde fg 123!") "string capitalize create new string with first capital character.")
+
+"capitalize!"
+"(String capitalize!)"
+
+(let x = "iGk*&El 8>")
+(let y = ( x capitalize! ))
+(assert: (y == x) "string capitalize! act in place.")
+(assert: (y == "Igk*&el 8>") "string capitalize! replace self with first capital character.")
+
+"<=>"
+"(String <==> s(String))"
+
+(let x = "abc")
+(let y = (x <=> "b"))
+(let z = (x <=> "aa"))
+(let k = (x <=> "abc"))
+(assert: (y == 1) "string <==> return 1 when x < y.")
+(assert: (z == -1) "string <==> return -1 when x > y.")
+(assert: (k == 0) "string <==> return 0 when x == y.")
+
+"center"
+"(String center length(Int) [padding(String)])"
+
+(let x = "abc")
+(assert: ( (x center 10 "123") == "123abc1231" ) "string center, odd right side first")
+(assert: ( (x center 4 "123") == "abc1" ) "string center, odd right side first")
+(assert: ( (x center 5 "123") == "1abc1" ) "string center, even both side")
+(assert: ( (x center 3 "123") == "abc" ) "string center, 0 do nothing")
+(assert: ( (x center 2 "123") == "abc" ) "string center, -N do nothing")
+(assert: ( (x center -1 "123") == "abc" ) "string center, -N do nothing")
+(assert: ( (x center 0 "123") == "abc" ) "string center, -N do nothing")
+
+"chars"
+"(String chars)"
+
+(let x = "123")
+(let y = (x chars))
+(assert: ((y type) == "List") "string chars, create a list of char of string.")
+(assert: ((y size) == (x size)) "string chars, size of created list is equal to size of string.")
+
+"chr"
+"(String chr)"
+
+(let x = "123")
+(let y = (x chr))
+(assert: (y == "1") "string chr, return the first char of string.")
+(assert: (("" chr) == "") "string chr, return empty string of empty string.")
+
+"clear"
+"(String clear)"
+
+(let x = "123")
+(let y = (x clear))
+(assert: (y == x) "string clear, return itself")
+(assert: (y == "") "string clear, clear itself.")
+
+"delete"
+"(String delete N(...String))"
+"Delete all parameters N one by one."
+
+(let x = "1232")
+(let y = (x delete "2"))
+(assert: (y == "13") "string delete, delete all exist parameter string.")
+(let y = (x delete "2" "1"))
+(assert: (y == "3") "string delete, delete all exist parameter string.")
+
+"delete!"
+"(String delete! N(...String))"
+"Delete all parameters N one by one in place."
+
+(let x = "123")
+(let y = (x delete! "2"))
+(assert: (x == y ) "string delete!, delete all exist parameter string in place.")
+(assert: (x == "13" ) "string delete!, delete all exist parameter string in place.")
+
+"lower"
+"(String lower)"
+"Create a new string with all lower char."
+
+(let x = "aEddfG0 x")
+(let y = (x lower))
+(assert: (x != y) "string lower,")
+(assert: (x == "aEddfG0 x") "string lower,")
+(assert: (y == "aeddfg0 x") "string lower,")
+
+"lower!"
+"(String lower!)"
+"Replace all characters as lower case."
+
+(let x = "aEddfG0 x")
+(let y = (x lower!))
+(assert: (x == y) "string lower!,")
+(assert: (y == "aeddfg0 x") "string lower!,")
+
+"upper"
+"(String upper)"
+"Create a new string with all upper char."
+
+(let x = "aEddfG0 x")
+(let y = (x upper))
+(assert: (x != y) "string upper,")
+(assert: (x == "aEddfG0 x") "string upper,")
+(assert: (y == "AEDDFG0 X") "string upper,")
+
+"upper!"
+"(String upper)"
+"Replace all characters as upper case."
+
+(let x = "aEddfG0 x")
+(let y = (x upper!))
+(assert: (x == y) "string upper!,")
+(assert: (y == "AEDDFG0 X") "string upper!,")
+
+"each"
+"(String each callback(Lambda))"
+""
+
+("" each (|i v| (puts: i v)))
+("0123456789EAD_*&$#@" each (|i v| #(puts: i v)#))
+
+"empty?"
+"(String empty?)"
+""
+(assert: ("" empty?) "string empty?,")
+(assert: ((" " empty?)!) "string empty?,")
+
+"end_with?"
+"(String end_with? suffix(String))"
+""
+
+(assert: ("eed " end_with? " ") "string end_with?,")
+(assert: ("abc" end_with? "") "string end_with?,")
+(assert: (("abcD" end_with? "d")!) "string end_with?,")
+
+"start_with?"
+"(String start_with? suffix(String))"
+""
+
+(assert: ("  eed" start_with? " ") "string start_with?,1")
+(assert: ("abc" start_with? "a") "string start_with?,2")
+(assert: (("abcD" start_with? "A")!) "string start_with?,3")
+
+"include?"
+"(String include? sub(String))"
+""
+
+(assert: ("d EigL*" include? "") "string include?,")
+(assert: ("d EigL*" include? " ") "string include?,")
+(assert: ("d EigL*" include? "*") "string include?,")
+
+"index"
+"(String index sub(String))"
+""
+
+(assert: (("a eG 8Yg&" index "") == 0) "string index,")
+(assert: (("a eG 8Yg&" index "E") == -1) "string index,")
+(assert: (("a eG 8Yg&" index " ") == 1) "string index,")
+
+"rindex"
+"(String rindex sub(String))"
+""
+
+(assert: (("a eG 8Yg&" rindex "") == 9) "string rindex,")
+(assert: (("a eG 8Yg&" rindex "E") == -1) "string rindex,")
+(assert: (("a eG 8Yg&" rindex " ") == 4) "string rindex,")
+
+"insert"
+"(String insert index(Int) sub(String))"
+""
+
+(let x = "abc")
+(let y = ( x insert -3 "x"))
+(assert: (x == y) "string insert,")
+(assert: (x == "xabc") "string insert,")
+
+"size"
+"(String size)"
+""
+
+(assert: ((" " size) == 1) "string size,")
+(assert: (("" size) == 0) "string size,")
+(assert: (("scd  " size) == 5) "string size,")
+
+
+"ljust"
+"(String ljust length(Int) [padding(String)])"
+""
+
+(let x = "123")
+(assert: ((x ljust -1) == "123") "string ljust,")
+(assert: ((x ljust 3) == "123") "string ljust,")
+(assert: ((x ljust 9) == "123      ") "string ljust,")
+(assert: ((x ljust 11 "abc") == "123abcabcab") "string ljust,")
+
+"rjust"
+"(String rjust length(Int) [padding(String)])"
+""
+
+(let x = "123")
+(assert: ((x rjust -1) == "123") "string rjust,")
+(assert: ((x rjust 3) == "123") "string rjust,")
+(assert: ((x rjust 9) == "      123") "string rjust,")
+(assert: ((x rjust 11 "abc") == "abcabcab123") "string rjust,")
+
+"lstrip"
+"(String lstrip)"
+""
+
+(let x = "  \txx")
+(let y = (x lstrip))
+(assert: (y == "\txx") "string lstrip,")
+(assert: (x != y) "string lstrip,")
+
+"lstrip!"
+"(String lstrip!)"
+""
+
+(let x = "  \txx")
+(assert: ((x lstrip!) == "\txx") "string lstrip!,")
+(assert: (x == "\txx") "string lstrip!,")
+
+"rstrip"
+"(String rstrip)"
+""
+
+(let x = "  \txx\t  ")
+(let y = (x rstrip))
+(assert: (y == "  \txx\t") "string rstrip,")
+(assert: (x != y) "string rstrip,")
+
+"rstrip!"
+"(String rstrip!)"
+""
+
+(let x = "  \txx\t  ")
+(let y = (x rstrip!))
+(assert: (y == "  \txx\t") "string rstrip!,")
+(assert: (x == y) "string rstrip!,")
+
+"strip"
+"(String strip)"
+""
+
+(let x = "  \txx\t  ")
+(let y = (x strip))
+(assert: (y == "\txx\t") "string strip,")
+(assert: (x != y) "string strip,")
+
+"strip!"
+"(String strip!)"
+""
+
+(let x = "  \txx\t  ")
+(let y = (x strip!))
+(assert: (y == "\txx\t") "string strip!,")
+(assert: (x == y) "string strip!,")
+
+"partition"
+"(String partition delimiter(String))"
+""
+
+(let x = "hello")
+(let y = (x partition ""))
+(assert: (x != y) "string partition,")
+(assert: ((y type) == "List") "string partition,")
+(assert: ((y @ 0) == "") "string partition,")
+(assert: ((y @ 1) == "") "string partition,")
+(assert: ((y @ 2) == "hello") "string partition,")
+(let y = (x partition " "))
+(assert: (x != y) "string partition,")
+(assert: ((y type) == "List") "string partition,")
+(assert: ((y @ 0) == "hello") "string partition,")
+(assert: ((y @ 1) == "") "string partition,")
+(assert: ((y @ 2) == "") "string partition,")
+(let y = (x partition "l"))
+(assert: (x != y) "string partition,")
+(assert: ((y type) == "List") "string partition,")
+(assert: ((y @ 0) == "he") "string partition,")
+(assert: ((y @ 1) == "l") "string partition,")
+(assert: ((y @ 2) == "lo") "string partition,")
+(let y = (x partition "hello"))
+(assert: (x != y) "string partition,")
+(assert: ((y type) == "List") "string partition,")
+(assert: ((y @ 0) == "") "string partition,")
+(assert: ((y @ 1) == "hello") "string partition,")
+(assert: ((y @ 2) == "") "string partition,")
+(let y = (x partition "lo"))
+(assert: (x != y) "string partition,")
+(assert: ((y type) == "List") "string partition,")
+(assert: ((y @ 0) == "hel") "string partition,")
+(assert: ((y @ 1) == "lo") "string partition,")
+(assert: ((y @ 2) == "") "string partition,")
+
+"rpartition"
+"(String rpartition delimiter(String))"
+""
+
+(let x = "hello")
+(let y = (x rpartition ""))
+(assert: (x != y) "string rpartition,")
+(assert: ((y type) == "List") "string rpartition,")
+(assert: ((y @ 0) == "hello") "string rpartition,")
+(assert: ((y @ 1) == "") "string rpartition,")
+(assert: ((y @ 2) == "") "string rpartition,")
+(let y = (x rpartition " "))
+(assert: (x != y) "string rpartition,")
+(assert: ((y type) == "List") "string rpartition,")
+(assert: ((y @ 0) == "") "string rpartition,")
+(assert: ((y @ 1) == "") "string rpartition,")
+(assert: ((y @ 2) == "hello") "string rpartition,")
+(let y = (x rpartition "l"))
+(assert: (x != y) "string rpartition,")
+(assert: ((y type) == "List") "string rpartition,")
+(assert: ((y @ 0) == "hel") "string rpartition,")
+(assert: ((y @ 1) == "l") "string rpartition,")
+(assert: ((y @ 2) == "o") "string rpartition,")
+(let y = (x rpartition "hello"))
+(assert: (x != y) "string rpartition,")
+(assert: ((y type) == "List") "string rpartition,")
+(assert: ((y @ 0) == "") "string rpartition,")
+(assert: ((y @ 1) == "hello") "string rpartition,")
+(assert: ((y @ 2) == "") "string rpartition,")
+(let y = (x rpartition "lo"))
+(assert: (x != y) "string rpartition,")
+(assert: ((y type) == "List") "string rpartition,")
+(assert: ((y @ 0) == "hel") "string rpartition,")
+(assert: ((y @ 1) == "lo") "string rpartition,")
+(assert: ((y @ 2) == "") "string rpartition,")
+
+"replace"
+"(String replace target(String))"
+""
+
+(let x = "hello")
+(let y = (x replace "x"))
+(assert: (x == y) "string replace,")
+(assert: (x == "x") "string replace,")
+
+"reverse"
+"(String reverse)"
+""
+
+(let x = "hello")
+(let y = (x reverse))
+(assert: (x != y) "string reverse,")
+(assert: (y == "olleh") "string reverse,")
+(let x = "")
+(let y = (x reverse))
+(assert: (x == y) "string reverse,")
+(assert: (y == "") "string reverse,")
+
+"reverse!"
+"(String reverse!)"
+""
+
+(let x = "hello")
+(let y = (x reverse!))
+(assert: (x == y) "string reverse!,")
+(assert: (y == "olleh") "string reverse!,")
+(let x = "")
+(let y = (x reverse!))
+(assert: (x == y) "string reverse!,")
+(assert: (y == "") "string reverse!,")
+
+"slice"
+"(String slice start(Int) [size(Int)]"
+""
+
+(let x = "hello")
+(let y1 = (x slice 5 6))
+(let y2 = (x slice -6 6))
+(let y3 = (x slice -5 6))
+(let y4 = (x slice 5 6))
+(let y5 = (x slice 4 6))
+(assert: (y1 == nil) "string slice,")
+(assert: (y2 == nil) "string slice,")
+(assert: (y3 == "hello") "string slice,")
+(assert: (y4 == nil) "string slice,")
+(assert: (y5 == "o") "string slice,")
+
+"slice!"
+"(String slice! start(Int) [size(Int)]"
+"Deletes the specified portion from string, and returns the portion deleted"
+
+(let x = "hello")
+(let y = (x slice! 5 6))
+(assert: (x == "hello") "string slice!,1")
+(assert: (y == nil) "string slice!,2")
+(let x = "hello")
+(let y = (x slice! -6 6))
+(assert: (x == "hello") "string slice!,3")
+(assert: (y == nil) "string slice!,4")
+(let x = "hello")
+(let y = (x slice! -5 6))
+(assert: (x == "") "string slice!,5")
+(assert: (y == "hello") "string slice!,6")
+(let x = "hello")
+(let y = (x slice! 5 6))
+(assert: (x == "hello") "string slice!,7")
+(assert: (y == nil) "string slice!,8")
+(let x = "hello")
+(let y = (x slice! 4 6))
+(assert: (x == "hell") "string slice!,9")
+(assert: (y == "o") "string slice!,10")
+(let x = "hello")
+(let y = (x slice! 2 6))
+(assert: (x == "he") "string slice!,11")
+(assert: (y == "llo") "string slice!,12")
+(let x = "hello")
+(let y = (x slice! 0 3))
+(assert: (x == "lo") "string slice!,11")
+(assert: (y == "hel") "string slice!,12")
+
+"split"
+"(String split sep(String))"
+""
+
+(let x = "123")
+(let y = (x split "2"))
+(assert: ((y type) == "List") "string split,1")
+(assert: ((y @ 0) == "1") "string split,2")
+(assert: ((y @ 1) == "3") "string split,3")
+(let x = "123")
+(let y = (x split ""))
+(assert: ((y type) == "List") "string split,4")
+(assert: ((y @ 0) == "1") "string split,5")
+(assert: ((y @ 1) == "2") "string split,6")
+(assert: ((y @ 2) == "3") "string split,7")
+(let x = "123")
+(let y = (x split "5"))
+(assert: ((y type) == "List") "string split,8")
+(assert: ((y @ 0) == "123") "string split,9")

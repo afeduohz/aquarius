@@ -1,0 +1,48 @@
+(let x = (Range: 2))
+(assert: ((x type) == "Range" ) "range type,")
+
+"count"
+"(Range count)"
+
+(let x = (Range: 2))
+(assert: ((x count) == 2 ) "range count,")
+
+"begin" "end"
+"(Range begin)"
+"(Range end)"
+
+(let x = (Range: 2 10))
+(assert: ((x begin) == 2 ) "range begin,")
+(assert: ((x end) == 10 ) "range end,")
+
+">>" "<<"
+"(Range >> callback(Lambda))"
+"(Range << callback(Lambda))"
+
+(let x = (Range: 2 5))
+(let r = "")
+(let y = (|i|(r << i)))
+(x >> y)
+(assert: (r == "234") "range >>,")
+(let r = "")
+(x << y)
+(assert: (r == "432") "range <<,")
+
+">>>" "<<<"
+"(Range >>> step(Int) callback(Lambda))"
+"(Range <<< step(Int) callback(Lambda))"
+
+(let x = (Range: 1 10))
+(let r = "")
+(let y = (|i|(r << i)))
+(x >>> 2 y)
+(assert: (r == "13579") "range >>>,")
+(let r = "")
+(x <<< 3 y)
+(assert: (r == "963") "range <<<,")
+
+"sample"
+"(Range sample)"
+
+(let x = (Range: 1 10))
+(x >> (|| (puts: (x sample))))

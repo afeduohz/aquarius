@@ -1,0 +1,12 @@
+(let input = args)
+
+(let name = ((input @ 0) to_s))
+(let age = ((input @ 1) to_i))
+
+(let @name = (|| name))
+(let @age = (|| age))
+
+(let Dance = (|guy|
+        (show: "lets dance," guy "i am" name ", and" age "old.")
+    )
+)

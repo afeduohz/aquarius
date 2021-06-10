@@ -1,0 +1,27 @@
+"break"
+
+(x = 1)
+(for (x < 10):
+    (x = (x + 1))
+    (if (x odd?):
+        break
+    else
+        (puts: x "x")
+    )
+else
+    (puts: "done")
+)
+
+"continue"
+
+(x = 1)
+(for (x < 10):
+    (x = (x + 1))
+    (if (x odd?):
+        continue
+    else
+        (puts: x "x")
+    )
+else
+    (puts: "done")
+)

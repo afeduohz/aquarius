@@ -1,0 +1,9 @@
+"decode"
+
+(let x = (encoding/json decode "[{\"1\": 1},  \n1, true, false, null, 0.1]"))
+(puts: x)
+
+"encode"
+
+(let x = (encoding/json encode ["w中文" 1 2 true false nil String {"name": "geo" "age":  19}]))
+(show: x)

@@ -1,0 +1,12 @@
+(require kindergarten/boy as Boy)
+
+(puts: kindergarten/boy Boy)
+(show: kindergarten/boy Boy)
+
+(let jim = (Boy: "jim" 5))
+(let tom = (Boy: "tom" 6))
+
+(jim Say (tom @name))
+(tom Say (jim @name))
+
+(puts: (Boy == kindergarten/boy))

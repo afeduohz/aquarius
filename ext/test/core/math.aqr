@@ -1,0 +1,4 @@
+(let x = 2.6)
+(puts: x (Math ceil x) (Math floor x))
+
+#DOTO need more cases#

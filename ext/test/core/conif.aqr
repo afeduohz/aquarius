@@ -1,0 +1,21 @@
+(let x = 1)
+(if (x > 2):
+    (puts: "big")
+else
+    (puts: "little" x)
+)
+
+(let x = 3)
+(if (x > 2):
+    (puts: "big")
+)
+
+
+(let x = 2)
+(if (x > 2):
+    (puts: "big")
+eif (x == 2):
+    (puts: "exactly 2")
+else
+    (puts: "little" x)
+)

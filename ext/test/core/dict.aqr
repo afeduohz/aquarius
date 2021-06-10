@@ -1,0 +1,251 @@
+
+(let x = { "a": 1 "b": 2})
+(puts: x (x type))
+
+"--<<--"
+
+(let x = {})
+(x << "x")
+(x << "y" 1)
+(x << "z" nil)
+(x << "t" true)
+(x << "f" [1 false])
+(x << "r" {"name": "george"})
+(puts: x)
+
+"--any?--"
+
+(let x = {})
+(let y = (x any?))
+(puts: x y)
+
+(let x = {"1": nil "2": nil "3": nil})
+(let y = (x any?))
+(puts: x y)
+
+(let x = {"empty": 1})
+(let y = (x any?))
+(puts: x y)
+
+(let f = (|k (v = false)|(puts:v)v))
+(let x = {"func": 1})
+(let y = (x any? f))
+(puts: x y)
+
+"--all?--"
+
+(let x = {})
+(let y = (x all?))
+(puts: x y)
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x all?))
+(puts: x y)
+
+(let f = (|k|k))
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x all? f))
+(puts: x y)
+
+"--clear--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(puts: x (x size) (x clear) (x size))
+
+"--clone--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x clone))
+(puts: x y (x == y))
+
+"--delete--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(puts: x (x size))
+(let y = (x delete "d"))
+(puts: x (x size) y)
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(puts: x (x size))
+(let y = (x delete "2"))
+(puts: x (x size) y)
+
+"--delete_if--"
+
+(let f = (|k v|(v == 1)))
+(let x = {"1": 1 "2": 2 "3": nil})
+(puts: x (x size))
+(let y = (x delete_if f))
+(puts: x (x size) y )
+
+"--each--"
+
+(let f = (|k v|(puts: k "->" v)))
+(let x = {"1": 1 "2": 2 "3": nil})
+(x each f)
+
+"--empty?--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(puts: (x empty?) ({} empty?))
+
+"--fetch--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x fetch "1"))
+(puts: x y)
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x fetch "4" "NOT_FOUND"))
+(puts: x y)
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x fetch "2" "FOUND"))
+(puts: x y)
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x fetch "2" (|k v| (k + v))))
+(puts: x y)
+
+"--keep_if--"
+
+(let f = (|k v|(v == 1)))
+(let x = {"1": 1 "2": 2 "3": nil})
+(puts: x (x size))
+(let y = (x keep_if f))
+(puts: x (x size) y )
+
+"--key--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x key 1))
+(puts: x (x key 1) (x key 2) (x key true) (x key nil))
+
+"--keys--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x keys))
+(puts: x y )
+
+(let x = {})
+(let y = (x keys))
+(puts: x y )
+
+"--size--"
+
+(puts: ({} size) ({"1": 1 "2": 2 "3": nil} size))
+
+"--key? member? include?--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(puts: ({} key? "1") (x member? "z") (x include? "2"))
+
+"--merge--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = {})
+(let z = {"name": "george"})
+(let y1 = (x merge y))
+(let z1 = (x merge z))
+(puts: x y z y1 z1 (x == y1) (x == z1))
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = {"1": "one"})
+(let z = (x merge y))
+(puts: x y z)
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = {"1": "one"})
+(let z = (x merge y (|k o n| (puts: k o n) (k + n o))))
+(puts: x y z)
+
+"--merge!--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = {})
+(let z = (x merge! y))
+(puts: x y z (z == x))
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = {"name": "george"})
+(let z = (x merge! y))
+(puts: x y z (z == x))
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = {"1": "one"})
+(let z = (x merge! y))
+(puts: x y z)
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = {"1": "one"})
+(let z = (x merge! y (|k o n| (puts: k o n) (k + n o))))
+(puts: x y z)
+
+"--replace--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x replace {}))
+(puts: x y (x == y))
+
+"--reject--"
+
+(let f = (|k v|(v == 1)))
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x reject f))
+(puts: x y (x == y))
+
+"--reject!--"
+
+(let f = (|k v|(v == 1)))
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x reject! f))
+(puts: x y (x == y))
+
+"--select--"
+
+(let f = (|k v|(v == 1)))
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x select f))
+(puts: x y (x == y))
+
+"--select!--"
+
+(let f = (|k v|(v == 1)))
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x select! f))
+(puts: x y (x == y))
+
+"--shift--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x shift))
+(puts: x y (x == y))
+(let y = (x shift))
+(puts: x y (x == y))
+(let y = (x shift))
+(puts: x y (x == y))
+(let y = (x shift))
+(puts: x y (x == y))
+
+"--to_l--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x to_l))
+(puts: x y)
+
+"--value?--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(puts: x (x value? 1) (x value? "1") (x value? nil))
+
+"--values--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x values))
+(puts: x y)
+
+"--values@--"
+
+(let x = {"1": 1 "2": 2 "3": nil})
+(let y = (x values@ "s" "name" "1"))
+(puts: x y)

@@ -1,0 +1,14 @@
+(let x =
+    (|word|
+        (if (word == "bye"):
+            (show: "aqr>" "seen you, bro. :]")
+        else
+            (show: "you>" word)
+            true
+        )
+    )
+)
+
+(show: "Say something :)")
+(show: "if you have no words anymore, please say bye...")
+((os stdin) read x)

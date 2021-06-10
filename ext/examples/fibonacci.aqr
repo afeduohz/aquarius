@@ -1,0 +1,38 @@
+# recursive solution #
+#
+(let fib = (|c|
+        (if ((c == 1) | (c == 2)):
+            1
+        else
+            ((fib: (c - 1)) + (fib: (c - 2)))
+        )
+    )
+)
+
+(puts: 10 (fib: 1) (fib: 2) (fib: 3) (fib: 4) (fib: 5) (fib: 6) (fib: 7) (fib: 8) (fib: 9) (fib: 10))
+#
+
+# more effective #
+# but int overflow #
+
+(let cache = [1 1])
+(let fib2 = (|c|
+        (if (c < 1):
+            0
+        eif (c <= (cache size)):
+            (cache @ (c - 1))
+        else
+            (let start = (cache size))
+            (for (start < c):
+                (cache << ((cache @ (start - 2)) + (cache @ (start - 1))))
+                (start = (start + 1))
+            )
+            (cache last)
+        )
+    )
+)
+(puts: 0 (fib2: 0) cache)
+(puts: 1 (fib2: 1) cache)
+(puts: 2 (fib2: 2) cache)
+(puts: 3 (fib2: 3) cache)
+(puts: 100 (fib2: 100) cache)

@@ -1,0 +1,38 @@
+puts
+
+(puts: puts)
+(puts: (puts type))
+(puts: (puts to_s))
+(puts: ((puts to_b) == true))
+(puts: (puts == puts))
+(puts: puts show noop assert)
+
+show
+
+(puts: show)
+(puts: (show type))
+(puts: (show to_s))
+(puts: ((show to_b) == true))
+(puts: (show == show))
+(show: puts show noop assert)
+
+noop
+
+(puts: noop)
+(puts: (noop type))
+(puts: (noop to_s))
+(puts: ((noop to_b) == true))
+(puts: (noop == noop))
+(puts: (noop:))
+
+assert
+
+(puts: assert)
+(puts: (assert type))
+(puts: (assert to_s))
+(puts: ((assert to_b) == true))
+(puts: (assert == assert))
+(puts: (assert:))
+(puts: (assert: true))
+# (puts: (assert: false)) #
+# (puts: (assert: ("1" == "2"))) #

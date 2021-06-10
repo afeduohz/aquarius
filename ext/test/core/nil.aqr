@@ -1,0 +1,7 @@
+(puts: nil)
+(puts: (nil type))
+(puts: (nil to_s))
+(puts: ((nil to_b) == false))
+(puts: (nil == nil))
+(puts: (Nil == Nil))
+(puts: (Nil:))

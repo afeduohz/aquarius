@@ -1,0 +1,14 @@
+"md5"
+
+(let x = (crypto/md5: "this is a test file 中文 d."))
+(assert: (x == "223c22a50daaf74dd5fc42967c9a2770") "md5,1")
+
+"sha1"
+
+(let x = (crypto/sha1: "this is a test file 中文 d."))
+(assert: (x == "6964211b3f8bd9429cfe785563bc9a909153f493") "sha1,1")
+
+"sha256"
+
+(let x = (crypto/sha256: "this is a test file 中文 d."))
+(assert: (x == "78fe844cae210c412650a7df690fbc031280e244f5c63bbb01e7b7dd3ed6e25e") "sha256,1")

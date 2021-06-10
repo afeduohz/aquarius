@@ -1,0 +1,423 @@
+
+(puts: (List: "1" true false))
+(puts: List)
+(puts: (List == List))
+(puts: (List type))
+(puts: [])
+(puts: ([] type))
+(puts: ([true false ["1" "2"]] to_s))
+(puts: ([] to_b))
+(puts: ([] == []))
+
+
+"+"
+
+(let x = [])
+(let y = ["1"])
+(let y1 = ["2" true "1"])
+(let z = (x + y y1))
+(puts: x y z)
+(puts: (x == z))
+
+"-"
+
+(let x = ["1" "2" "3"])
+(let y = ["2" "3" nil])
+(let z = (x - y))
+(puts: x y z (x == z))
+
+"*"
+
+(let x = ["1" "2" "3"])
+(let y = (x * "*"))
+(let z = (x * 4))
+(puts: x y z)
+
+"|"
+
+(let x = ["1" "2" "3"])
+(let y = ["1" "4"])
+(let z = ( x | y ))
+(puts: x y z)
+
+"&"
+
+(let x = ["1" "2" "3"])
+(let y = ["1" "4"])
+(let z = ( x & y ))
+(puts: x y z)
+
+"push" "<<"
+
+(let x = ["1" "2" "3"])
+(let y = (x push 2))
+(let z = (x << 2 3))
+(puts: x y z (x == y) (x == z) (y == z))
+
+"unshift"
+
+(let x = ["1" "2" "3"])
+(let y = (x unshift [2]))
+(let z = (x unshift 2 3))
+(puts: x y z (x == y) (x == z) (y == z))
+
+">>"
+
+(let x = ["1" "2" "3"])
+(let y = (x >>))
+(let z = (x >> 1))
+(puts: x y z (x == y) (x == z) (y == z))
+
+"@"
+
+(let x = ["1" "2" "3"])
+(let y = (x @))
+(let z = (x @ -3))
+(puts: x y z (x == y) (x == z) (y == z))
+
+"any"
+
+(let x = ["1" "2" "3"])
+(let y = (x any?))
+(let z = (x any? (|i| (i == "4"))))
+(let z1 = (x any? (|i| (i == "3"))))
+(let z2 = (x any? (||(|i| (i == "3"))) ))
+(puts: x y z z1 z2)
+
+"all"
+
+(let x = ["1" "2" "3"])
+(let y = (x all?))
+(let z = (x all? (|i| (i == "4"))))
+(let z1 = (x all? (|i| (i == "3"))))
+(let z2 = (x all? ((||(|i| (i == "3"))):) ))
+(puts: x y z z1 z2)
+
+"clear"
+
+(let x = ["1" "2" "3"])
+(let y = (x clear))
+(puts: x y (x == y))
+
+"map"
+
+(let x = ["1" "2" "3"])
+(let y = (x map))
+(let z = (x map (|i| (i + "!")) ))
+(puts: x y z (x == y) (x == z))
+
+"map!"
+
+(let x = ["1" "2" "3"])
+(let y = (x map!))
+(let z = (x map! (|i| (i + "!")) ))
+(puts: x y z (x == y) (x == z))
+
+"compact"
+
+(let x = ["1" "2" nil "3" false])
+(let y = (x compact))
+(let z = (x compact))
+(puts: x y z (x == y) (x == z))
+
+"compact!"
+
+(let x = ["1" "2" nil "3" false])
+(let y = (x compact!))
+(let z = (x compact!))
+(puts: x y z (x == y) (x == z))
+
+"count"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x count))
+(let z = (x count "2"))
+(puts: x y z (x == y) (x == z))
+
+"cycle"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x cycle 2 (|i| (puts:("&" + i)))))
+(puts: x y)
+
+"delete@"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x delete@ -6))
+(puts: x y)
+
+"delete"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x delete "2"))
+(puts: x y)
+
+"delete_if"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x delete_if (|i| (i == "2"))))
+(puts: x y)
+
+"drop"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x drop))
+(let y1 = (x drop 2))
+(let y2 = (x drop 5))
+(puts: x y y1 y2)
+
+"drop_if"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x drop_if (|i| (i == "2"))))
+(puts: x y)
+
+"each" "reverse_each"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x each (|i x| (puts: i x))))
+(let z = (x reverse_each (|i x| (puts: i x))))
+(puts: x y z)
+
+"empty?"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x empty?))
+(puts: x y ([1] empty?)([] empty?))
+
+"fetch"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x fetch 1))
+(puts: x y (x fetch 6) (x fetch 6 "default") (x fetch 3 (|i| (x @ i))))
+
+"fill"
+
+(let z = [1 2 3])
+(let z1 = (z fill 4))
+(puts: z z1 (z == z1))
+(let z2 = (z fill 6 1))
+(puts: z z2 (z == z2))
+(let z3 = (z fill 9 1 1))
+(puts: z z3 (z == z3))
+(let z4 = (z fill (|i|i) 1))
+(puts: z z4 (z == z4))
+
+"index"
+
+(let a = ["1" "2" "3"])
+(let a1 = (a index 3))
+(let a2 = (a index 4))
+(let a3 = (a index (|i|(i == "1"))))
+(let a4 = (a index (|i|(i == "9"))))
+(puts: a a1 a2 a3 a4)
+
+"rindex"
+
+(let b = ["1" "2" "3" "1"])
+(let b1 = (b rindex 1))
+(let b2 = (b rindex 4))
+(let b3 = (b rindex (|i|(i == "1"))))
+(let b4 = (b rindex (|i|(i == "9"))))
+(puts: b b1 b2 b3 b4)
+
+"first"
+
+(let c = [ 1 2 3 ])
+(let c1 = (c first))
+(let c2 = (c first -1))
+(let c3 = (c first 4))
+(puts: c c1 c2 c3)
+
+"include?"
+
+(let d = [1 2 3])
+(let d1 = (d include? 1))
+(let d2 = (d include? 0))
+(puts: d d1 d2)
+
+"insert"
+
+(let e = [1 2 3])
+(let e1 = (e insert -1 9 8))
+(puts: e e1  (e == e1))
+(let e2 = (e insert 2 0 0))
+(puts: e2)
+
+"join"
+
+(let f = [1 2])
+(let f1 = (f join "-"))
+(puts: f f1)
+
+"keep_if"
+
+(let g = [1 2])
+(let f = (|i| true))
+(let g1 = (g keep_if f))
+(puts: g g1 (g == g1))
+
+"last"
+
+(let h = [0 1 2 3])
+(let h1 = (h last))
+(let h2 = (h last 1))
+(let h3 = (h last 2))
+(let h4 = (h last 3))
+(let h5 = (h last 4))
+(let h6 = (h last 10))
+(puts: h h1 h2 h3 h4 h5 h6)
+
+"size"
+
+(puts: ([1 2] size)([] size))
+
+"pop"
+
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop))
+(puts: i i1)
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop 0))
+(puts: i i1)
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop 1))
+(puts: i i1)
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop 2))
+(puts: i i1)
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop 3))
+(puts: i i1)
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop 4))
+(puts: i i1)
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop 5))
+(puts: i i1)
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop 6))
+(puts: i i1)
+(let i = [1 2 3 4 5 6])
+(let i1 = (i pop 7))
+(puts: i i1)
+
+"shift"
+
+(let a = [])
+(let a1 = (a shift))
+(puts: a a1)
+(let a = [1 2 3])
+(let a1 = (a shift))
+(puts: a a1)
+(let a = [1 2 3 4])
+(let a1 = (a shift 2))
+(puts: a a1)
+(let a = [1 2 3 4])
+(let a1 = (a shift 3))
+(puts: a a1)
+(let a = [1 2 3 4])
+(let a1 = (a shift 4))
+(puts: a a1)
+(let a = [1 2 3 4])
+(let a1 = (a shift 5))
+(puts: a a1)
+(let a = [1 2 3 4])
+(let a1 = (a shift -2))
+(puts: a a1)
+
+"reject" "reject!"
+
+(let c = [1 2 3 1 2 1 1 9])
+(let f = (|i| (i == 1)))
+(let c1 = (c reject f))
+(puts: c c1 (c1 == c))
+(let c2 = (c reject! f))
+(puts: c c2)
+(let f = (|i| false))
+(let c3 = (c reject! f))
+(puts: c c3)
+
+"reverse" "reverse!"
+
+(let e = [1 2 3])
+(let e1 = (e reverse))
+(puts: e e1 (e == e1))
+(let e2 = (e reverse!))
+(puts: e e2 (e == e2))
+
+"sample"
+
+(let f = [1 2 3 4])
+(let f1 = (f sample))
+(let f2 = (f sample))
+(let f3 = (f sample))
+(let f4 = (f sample 1))
+(let f5 = (f sample 30))
+(puts: f f1 f2 f3 f4 f5)
+
+"select" "select!"
+
+(let a = [1 2 1 2 3 4 8 9 3])
+(let f = (|i| (i == 3)))
+(let f1 = (|i| (i == -3)))
+(let a1 = (a select f))
+(puts: a a1 (a == a1))
+(let a2 = (a select! f1))
+(puts: a a2 (a == a2))
+
+"slice"
+
+(let a = [1 2 3])
+(let b = (a slice 0 2))
+(puts: a b (a == b))
+
+"slice!"
+
+(let a = [1 2 3 4 5])
+(let b = (a slice! 2 1))
+(puts: a b (a == b))
+
+"sort" "sort!"
+
+(let x = ["b" 1.2 "a" 3 4 1 2 9 18 222 6 16])
+(puts: x)
+(let x1 = (x sort (|x y| true)))
+(let x2 = (x sort! (|x y| true)))
+(puts: x1 (x == x1))
+(puts: x2 (x == x2))
+(let x3 = (x sort ))
+(let x4 = (x sort!))
+(puts: x3 (x == x3))
+(puts: x4 (x == x4))
+
+"take" "take_if"
+
+(let x = [1 2 3 4 5])
+(let y = (x take 60))
+(let z = (x take_if (|i| (i == 1))))
+(puts: x y z)
+
+"uniq"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x uniq))
+(puts: x y (x == y))
+
+"uniq!"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x uniq!))
+(puts: x y (x == y))
+
+"values@"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x values@ 1 -2 -6 -7 6))
+(puts: x y (x == y))
+
+"zip"
+
+(let x = ["1" "2" nil "3" false "2"])
+(let y = (x zip [1 9] [1 2 3 4 5 6 7 8 9]))
+(puts: x y (x == y))

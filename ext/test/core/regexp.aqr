@@ -1,0 +1,30 @@
+(let x = `(?i)b/c`)
+(puts: x (x type) (x match? "ab/C"))
+
+(let x = `(?i)b/c`)
+(puts: x (x expr))
+
+(let x = `(?P<Name1>abc)(def)(?P<Name3>ghi)`)
+(puts: x (x groups) (x names))
+
+"literal_prefix"
+
+(let x = `(?P<Name1>abc)(def)(?P<Name3>ghi)`)
+(puts: x (x literal_prefix))
+
+"find" "longest"
+
+(let x = `(?U)H[\w\s]+o`)
+(let y = "Hello World, 123 Go!")
+(puts: (x find y) (x longest) (x find y))
+
+"find_all"
+
+(let x = `(((abc.)def.)ghi)`)
+(let y = (x find_all "abc-def-ghi abc+def+ghi"))
+(let z = (x find_all "abc-def-ghi abc+def+ghi" 1))
+(puts: x y z)
+
+(let x = `\`A`)
+(let y = (x find_all "THis is a `A` HERE."))
+(puts: x y (x expr))

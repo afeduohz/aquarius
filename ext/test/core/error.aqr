@@ -1,0 +1,17 @@
+(puts: "out-range-error" error)
+( try
+	(puts: "error-" error)
+	#(let error = "E")#
+	(Error: "self-defined error")
+catch
+	(puts: "hello" Error Error)
+	(puts: "hello" error)
+	(puts: "hello" (error type))
+	(puts: "hello" (error to_s))
+	(puts: "hello" ((error to_b) == false))
+	(puts: "hello" (Error == Error))
+	(puts: "hello" (error message))
+	#(puts: Error (Error: "except"))#
+finally
+	(puts: "well done")
+)
