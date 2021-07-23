@@ -1,1 +1,3 @@
-aquarius v0.1.0
+### aquarius v0.1.2
+
+- http update.
