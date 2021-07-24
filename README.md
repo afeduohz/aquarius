@@ -1,3 +1,6 @@
-### aquarius v0.1.2
+### aquarius v0.1.3
 
-- http update.
+- http update
+- os update
+- fs update
+- File update
