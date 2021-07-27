@@ -10,6 +10,16 @@ Aquarius
 (show: "aquarius" "is" "a" "funny" "script")
 ```
 
+#### Binary download links
+
+Latest v0.1.5
+
++ [v0.1.5 for mac](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-mac.zip)
++ [v0.1.5 for linux](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-linux.zip)
++ [v0.1.5 for windows](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-windows.zip)
+
+
+
 Table of Contents
 -
 
