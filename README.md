@@ -10,20 +10,12 @@ Aquarius
 (show: "aquarius" "is" "a" "funny" "script")
 ```
 
-#### Binary download links
-
-Latest v0.1.5
-
-+ [v0.1.5 for mac](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-mac.zip)
-+ [v0.1.5 for linux](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-linux.zip)
-+ [v0.1.5 for windows](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-windows.zip)
-
-
-
 Table of Contents
 -
 
 + [What is Aquarius](#What-is-Aquarius) 
++ [Installation](#Installation)
++ [VSCode plugin](#VSCode-Plugin)
 + [Reserved](#Reserved)
 + [Components](#Components) 
   + [Require](#Require)
@@ -55,6 +47,28 @@ There are two types of `Lambda`, one is the role of the
 organizer of the module, and the other is the ordinary method.
 `Module lambdas` are usually those `*.aqr` files, and ordinary 
 lambdas are `lambda expressions`.
+
+Installation
+-
+
+### Latest v0.1.5
+
++ [v0.1.5 for mac](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-mac.zip)
++ [v0.1.5 for linux](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-linux.zip)
++ [v0.1.5 for windows](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-windows.zip)
+
+VSCode Plugin
+-
+
+In the `Extensions` tab, please fill `aquarius-` in `Search Extension in Marketplace`
+field, search and install it.
+
+![image](assets/vscode-plugin-install.png)
+
+Sincerely welcome you to participate in the development of plugin and 
+improve functions, to make Aquarius more pleasant to use.
+
+[VSCode Plugin Repo](https://github.com/afeduohz/aquarius-vscode-extension)
 
 Reserved
 -
