@@ -4,4 +4,4 @@
 #./bin/aqr.mac run ./ext/test/core/nil.aqr
 
 # to execute all scripts combined in test.aqr
-./bin/aqr.mac run ./ext/test.aqr
+./bin/aqr run ./ext/test.aqr

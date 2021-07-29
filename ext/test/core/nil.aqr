@@ -1,7 +1,25 @@
-(puts: nil)
-(puts: (nil type))
-(puts: (nil to_s))
-(puts: ((nil to_b) == false))
-(puts: (nil == nil))
-(puts: (Nil == Nil))
-(puts: (Nil:))
+# -- nil #
+
+(puts: "puts" nil)
+
+# == #
+(assert:(nil == nil) "")
+(assert:(nil == nil) "")
+
+# != #
+(assert:(nil != 1) "test (nil != 1)")
+(assert:((nil != nil) !) "test (nil != nil)")
+
+# to_s #
+(assert:((nil to_s) == "nil") "test (nil to_s)")
+
+# to_b #
+(assert:((nil to_b) == true) "test (nil to_b)")
+
+# type #
+(assert:((nil type) == "Nil") "test (nil type)")
+
+
+# -- module Nil #
+
+(puts: Nil)

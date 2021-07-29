@@ -1,7 +1,7 @@
 Aquarius
 =
 
-![](https://img.shields.io/badge/aquarius-v0.1.5-brightgreen.svg?style=flat-square)
+![](https://img.shields.io/badge/aquarius-v0.1.6-brightgreen.svg?style=flat-square)
 ![](https://img.shields.io/github/downloads/afeduohz/aquarius/total?style=flat-square)
 ![](https://img.shields.io/github/stars/afeduohz/aquarius?style=flat-square)
 ![](https://img.shields.io/github/license/afeduohz/aquarius?style=flat-square)
@@ -51,11 +51,11 @@ lambdas are `lambda expressions`.
 Installation
 -
 
-### Latest v0.1.5
+### Latest v0.1.6
 
-+ [v0.1.5 for mac](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-mac.zip)
-+ [v0.1.5 for linux](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-linux.zip)
-+ [v0.1.5 for windows](https://github.com/afeduohz/aquarius/releases/download/v0.1.5/aquarius-v0.1.5-windows.zip)
++ [v0.1.6 for mac](https://github.com/afeduohz/aquarius/releases/download/v0.1.6/aquarius-v0.1.6-mac.zip)
++ [v0.1.6 for linux](https://github.com/afeduohz/aquarius/releases/download/v0.1.6/aquarius-v0.1.6-linux.zip)
++ [v0.1.6 for windows](https://github.com/afeduohz/aquarius/releases/download/v0.1.6/aquarius-v0.1.6-windows.zip)
 
 VSCode Plugin
 -
