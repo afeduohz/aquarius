@@ -1,11 +1,66 @@
-(puts: true)
-(puts: (true type))
-(puts: (true to_s))
-(puts: ((true to_b) == true))
-(puts: (true == true))
-(puts: (true &) (true & true) (true & false))
-(puts: (true |) (true | true) (true | false))
-(puts: (true ^) (true ^ true) (true ^ false) (true ^ false true))
-(puts: (true !) (true not))
-(puts: (True == True))
-(puts: (True:))
+# >>> module True #
+
+# == #
+(assert:(True == True) "test (True == True)")
+
+# != #
+(assert:(True != 1) "test (True != 1)")
+(assert:(True != true) "test (True != true)")
+
+# to_s #
+(assert:((True to_s) == "<module True>") "test (True to_s)")
+
+# to_b #
+(assert:((True to_b) == true) "test (True to_b)")
+
+# type #
+(assert:((True type) == "lambda") "test (True type)")
+
+# : #
+(assert:((True:) == true) "test (True:)")
+
+# >>> value true #
+
+# == #
+(assert:(true == true) "test (true == true)")
+
+# != #
+(assert:(true != 1) "test (true != 1)")
+(assert:((true != true) !) "test (true != true)")
+
+# to_s #
+(assert:((true to_s) == "true") "test (true to_s)")
+
+# to_b #
+(assert:((true to_b) == true) "test (true to_b)")
+
+# type #
+(assert:((true type) == "True") "test (true type)")
+
+# & #
+(assert:((true &) == true) "test (true &)")
+(assert:((true & true) == true) "test (true & true)")
+(assert:((true & false) == false) "test (true & false)")
+(assert:((true & false true) == false) "test (true & false true)")
+(assert:((true & nil) == false) "test (true & nil)")
+(assert:((true & 1 "" 0 -1 String) == true) "test (true & 1 \"\" 0 -1 String)")
+
+# | #
+(assert:((true |) == true) "test (true |)")
+(assert:((true | true) == true) "test (true | true)")
+(assert:((true | false) == true) "test (true | false)")
+(assert:((true | false true) == true) "test (true | false true)")
+(assert:((true | nil) == true) "test (true | nil)")
+(assert:((true | 1 "" 0 -1 String) == true) "test (true | 1 \"\" 0 -1 String)")
+
+# ^ #
+(assert:((true ^) == true) "test (true ^)")
+(assert:((true ^ true) == false) "test (true ^ true)")
+(assert:((true ^ false) == true) "test (true ^ false)")
+(assert:((true ^ false false) == true) "test (true ^ false)")
+
+# ! not #
+(assert:((true !) == false) "test (true !)")
+(assert:((true not) == false) "test (true not)")
+
+(puts: "True/true checkpoints all passed.")

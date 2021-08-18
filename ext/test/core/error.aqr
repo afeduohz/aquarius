@@ -1,17 +1,68 @@
-(puts: "out-range-error" error)
-( try
-	(puts: "error-" error)
-	#(let error = "E")#
-	(Error: "self-defined error")
+# >>> module Error #
+
+# == #
+(assert:(Error == Error) "test (Error == Error)")
+
+# != #
+(assert:(Error != 1) "test (Error != 1)")
+(assert:(Error != error) "test (Error != error)")
+
+# to_s #
+(assert:((Error to_s) == "<module Error>") "test (Error to_s)")
+
+# to_b #
+(assert:((Error to_b) == true) "test (Error to_b)")
+
+# type #
+(assert:((Error type) == "lambda") "test (Error type)")
+
+# : #
+(try
+    (Error: "NewError")
 catch
-	(puts: "hello" Error Error)
-	(puts: "hello" error)
-	(puts: "hello" (error type))
-	(puts: "hello" (error to_s))
-	(puts: "hello" ((error to_b) == false))
-	(puts: "hello" (Error == Error))
-	(puts: "hello" (error message))
-	#(puts: Error (Error: "except"))#
-finally
-	(puts: "well done")
+    (assert: ((error message) == "NewError") "test (Error:\"NewError\")")
 )
+
+# >>> value error #
+
+# == #
+(assert:(error == nil) "test (error == nil)")
+(assert:(error == error) "test (error == error)")
+
+# != #
+(assert:(error != 1) "test (error != 1)")
+(assert:((error != error) !) "test (error != error)")
+
+# to_s #
+(assert:((error to_s) == "nil") "test (error to_s)")
+(try
+    (Error: "NewError")
+catch
+    (assert:((error to_s) == "<Error: NewError>") "test (error to_s)")
+)
+
+# to_b #
+(assert:((error to_b) == false) "test (error to_b)")
+(try
+    (Error: "NewError")
+catch
+    (assert:((error to_b) == true) "test (error to_b)")
+)
+
+# type #
+(assert:((error type) == "Nil") "test (error type)")
+(try
+    (Error: "NewError")
+catch
+    (assert:((error type) == "Error") "test (error type)")
+)
+
+# message #
+(try
+    (Error: "NewError")
+catch
+    (assert:((error message) == "NewError") "test (error message)")
+)
+
+(puts: "Error/error checkpoints all passed.")
+

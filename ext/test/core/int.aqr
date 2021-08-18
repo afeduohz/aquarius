@@ -1,261 +1,231 @@
-"+"
-"(Int + other(...Int|Float)"
+# >>> module Int #
 
+# == #
+(assert:(Int == Int) "test (Int == Int)")
+
+# != #
+(assert:(Int != 1) "test (Int != 1)")
+(assert:(Int != nil) "test (Int != nil)")
+
+# to_s #
+(assert:((Int to_s) == "<module Int>") "test (Int to_s)")
+
+# to_b #
+(assert:((Int to_b) == true) "test (Int to_b)")
+
+# type #
+(assert:((Int type) == "lambda") "test (Int type)")
+
+# : #
+(assert:((Int:) == 0) "test (Int:)")
+
+# >>> value int #
+
+# == #
+(assert:(1 == 1) "test (1 == 1)")
+
+# != #
+(assert:(1 != nil) "test (1 != nil)")
+(assert:((1 != 1) !) "test (1 != 1)")
+
+# to_s #
+(assert:((1 to_s) == "1") "test (int to_s)")
+
+# to_b #
+(assert:((1 to_b) == true) "test (int to_b)")
+
+# type #
+(assert:((1 type) == "Int") "test (int type)")
+
+# + #
 (let x = 1)
 (let y = (x + 10000000000000000))
-(assert: (y == 10000000000000001) "int +,1")
-(assert: ((y type) == "Int") "int +,2")
+(assert: (y == 10000000000000001) "test (int + other(...Int|Float)")
+(assert: ((y type) == "Int") "test (int + other(...Int|Float)")
 (let y = (x + 1.0))
-(assert: (y == 2.0) "int +,3")
-(assert: ((y type) == "Float") "int +,4")
+(assert: (y == 2.0) "test (int + other(...Int|Float)")
+(assert: ((y type) == "Float") "test (int + other(...Int|Float)")
 
-"-"
-"(Int - other(...Int|Float)"
-
+# - #
 (let x = 10000)
 (let y = (x - 10 20))
-(assert: (y == 9970) "int -,1")
-(assert: ((y type) == "Int") "int -,2")
+(assert: (y == 9970) "test (int - other(...Int|Float)")
+(assert: ((y type) == "Int") "test (int - other(...Int|Float)")
 
 (let y = (x - 1.0))
-(assert: (y == 9999.0) "int -,3")
-(assert: ((y type) == "Float") "int -,4")
+(assert: (y == 9999.0) "test (int - other(...Int|Float)")
+(assert: ((y type) == "Float") "test (int - other(...Int|Float)")
 
-"*"
-"(Int * other(...Int|Float)"
-
+# * #
 (let x = 2)
 (let y = (x * 2 -2))
-(assert: (y == -8) "int *,1")
-(assert: ((y type) == "Int") "int *,2")
+(assert: (y == -8) "test (int * other(...Int|Float)")
+(assert: ((y type) == "Int") "test (int * other(...Int|Float)")
 
 (let y = (x * 2.0))
-(assert: (y == 4.0) "int *,3")
-(assert: ((y type) == "Float") "int *,4")
+(assert: (y == 4.0) "test (int * other(...Int|Float)")
+(assert: ((y type) == "Float") "test (int * other(...Int|Float)")
 
-"/"
-"(Int / other(...Int|Float)"
-
+# / #
 (let x = 2)
 (let y = (x / -1.0))
-(assert: (y == -2.0) "int /,1")
-(assert: ((y type) == "Float") "int /,2")
+(assert: (y == -2.0) "test (int / other(...Int|Float)")
+(assert: ((y type) == "Float") "test (int / other(...Int|Float)")
 (let y = (x / 2.0))
-(assert: (y == 1.0) "int /,3")
-(assert: ((y type) == "Float") "int /,4")
+(assert: (y == 1.0) "test (int / other(...Int|Float)")
+(assert: ((y type) == "Float") "test (int / other(...Int|Float)")
 (let y = (x / 0.5))
-(assert: (y == 4) "int /,5")
-(assert: ((y type) == "Float") "int /,6")
+(assert: (y == 4) "test (int / other(...Int|Float)")
+(assert: ((y type) == "Float") "test (int / other(...Int|Float)")
 
-"%"
-"(Int % other(Int)"
-
+# % #
 (let x = 5)
 (let y = (x % 2))
-(assert: (y == 1) "int %,1")
-(assert: ((y type) == "Int") "int %,2")
+(assert: (y == 1) "test (int % other(int)")
+(assert: ((y type) == "Int") "test (int % other(int)")
 (let y = (4 % 2))
-(assert: (y == 0) "int %,3")
+(assert: (y == 0) "test (int % other(int)")
 
-"**"
-"(Int ** x(Int|Float)"
-
+# ** #
 (let x = 2)
 (let y = (x ** 3))
-(assert: (y == 8) "int **,1")
-(assert: ((y type) == "Float") "int **,2")
+(assert: (y == 8) "test (int ** x(int|Float)")
+(assert: ((y type) == "Float") "test (int ** x(int|Float)")
 (let y = (x ** -3))
-(assert: (y == 0.125) "int **,3")
-(assert: ((y type) == "Float") "int **,4")
+(assert: (y == 0.125) "test (int ** x(int|Float)")
+(assert: ((y type) == "Float") "test (int ** x(int|Float)")
 (let y = (x ** 0))
-(assert: (y == 1.0) "int **,5")
-(assert: ((y type) == "Float") "int **,6")
+(assert: (y == 1.0) "test (int ** x(int|Float)")
+(assert: ((y type) == "Float") "test (int ** x(int|Float)")
 
-">"
-"(Int > x(*)"
-"x will be transfer to Int/Float"
-
+# > #
 (let x = 2)
-(assert: ((x > 3)!) "int >,1")
-(assert: ((x > 2)!) "int >,2")
-(assert: (x > nil) "int >,3")
-(assert: ((-1 > nil)!) "int >,4")
-(assert: ((x > 4.5)!) "int >,5")
-(assert: (x > 1.6) "int >,6")
+(assert: ((x > 3)!) "test (int > x(*)")
+(assert: ((x > 2)!) "test (int > x(*)")
+(assert: (x > nil) "test (int > x(*)")
+(assert: ((-1 > nil)!) "test (int > x(*)")
+(assert: ((x > 4.5)!) "test (int > x(*)")
+(assert: (x > 1.6) "test (int > x(*)")
 
-">="
-"(Int >= x(*)"
-"x will be transfer to Int/Float"
-
+# >= #
 (let x = 2)
-(assert: ((x >= 3)!) "int >=,1")
-(assert: (x >= 2) "int >=,2")
-(assert: (x >= nil) "int >=,3")
-(assert: ((-1 >= nil)!) "int >=,4")
-(assert: ((x >= 4.5)!) "int >=,5")
-(assert: ((1 >= 1.6)!) "int >=,6")
+(assert: ((x >= 3)!) "test (int >= x(*)")
+(assert: (x >= 2) "test (int >= x(*)")
+(assert: (x >= nil) "test (int >= x(*)")
+(assert: ((-1 >= nil)!) "test (int >= x(*)")
+(assert: ((x >= 4.5)!) "test (int >= x(*)")
+(assert: ((1 >= 1.6)!) "test (int >= x(*)")
 
-"<"
-"(Int < x(*)"
-"x will be transfer to Int/Float"
-
+# < #
 (let x = 2)
-(assert: (x < 3) "int <,1")
-(assert: ((x < 2.0)!) "int <,2")
-(assert: (-1 < nil) "int <,3")
-(assert: (x < 4.5) "int <,5")
+(assert: (x < 3) "test (int < x(*)")
+(assert: ((x < 2.0)!) "test (int < x(*)")
+(assert: (-1 < nil) "test (int < x(*)")
+(assert: (x < 4.5) "test (int < x(*)")
 
-"<="
-"(Int <= x(*)"
-"x will be transfer to Int/Float"
-
+# <= #
 (let x = 2)
-(assert: (x <= 3) "int <=,1")
-(assert: (x <= 2.0) "int <=,2")
-(assert: (0 <= nil) "int <=,3")
-(assert: (x <= 4.5) "int <=,5")
+(assert: (x <= 3) "test (int <= x(*)")
+(assert: (x <= 2.0) "test (int <= x(*)")
+(assert: (0 <= nil) "test (int <= x(*)")
+(assert: (x <= 4.5) "test (int <= x(*)")
 
-"abs"
-"(Int abs)"
-""
+# abs #
+(assert: ((2 abs) == 2) "test (int abs)")
+(assert: ((-1 abs) == 1) "test (int abs)")
+(assert: ((0 abs) == 0) "test (int abs)")
+(assert: ((-0 abs) == 0) "test (int abs)")
 
-(assert: ((2 abs) == 2)"int abs,1")
-(assert: ((-1 abs) == 1) "int abs,2")
-(assert: ((0 abs) == 0) "int <=,3")
-(assert: ((-0 abs) == 0) "int <=,4")
+# & #
+(assert: ((1 & 1) == 1) "test (int & other(int))")
+(assert: ((1 & 2) == 0) "test (int & other(int))")
 
-"&"
-"(Int & other(Int))"
-""
+# | #
+(assert: ((1 | 1) == 1) "test (int | other(int))")
+(assert: ((1 | 2) == 3) "test (int | other(int))")
 
-(assert: ((1 & 1) == 1)"int &,1")
-(assert: ((1 & 2) == 0)"int &,2")
+# ^ #
+(assert: ((1 ^ 1) == 0) "test (int ^ other(int))")
+(assert: ((1 ^ 2) == 3) "test (int ^ other(int))")
 
-"|"
-"(Int | other(Int))"
-""
+# << #
+(assert: ((1 << 1) == 2) "test (int << other(int))")
+(assert: ((1 << 2) == 4) "test (int << other(int))")
+(assert: ((1 << 100) == 0) "test (int << other(int))")
 
-(assert: ((1 | 1) == 1)"int |,1")
-(assert: ((1 | 2) == 3)"int |,2")
+# >> #
+(assert: ((4 >> 1) == 2) "test (int >> other(int))")
+(assert: ((4 >> 2) == 1) "test (int >> other(int))")
+(assert: ((4 >> 100) == 0) "test (int >> other(int))")
 
-"^"
-"(Int ^ other(Int))"
-""
+# ~ #
+(assert: ((1 ~) == -2) "test (int ~)")
+(assert: ((4 ~) == -5) "test (int ~)")
 
-(assert: ((1 ^ 1) == 0)"int ^,1")
-(assert: ((1 ^ 2) == 3)"int ^,2")
+# negate #
+(assert: ((-1 negate) == 1) "test (int negate)")
+(assert: ((1 negate) == -1) "test (int negate)")
+(assert: ((0 negate) == 0) "test (int negate)")
+(assert: ((0 negate) == +0) "test (int negate)")
+(assert: ((0 negate) == -0) "test (int negate)")
+(assert: ((-0 negate) == 0) "test (int negate)")
+(assert: ((-0 negate) == +0) "test (int negate)")
+(assert: ((-0 negate) == -0) "test (int negate)")
+(assert: ((+0 negate) == 0) "test (int negate)")
+(assert: ((+0 negate) == +0) "test (int negate)")
+(assert: ((+0 negate) == -0) "test (int negate)")
 
-"<<"
-"(Int << other(Int))"
-""
+# even? #
+(assert:  ((-1 even?)!) "test (int even?)")
+(assert:  (-2 even?) "test (int even?)")
+(assert:  ((11 even?)!) "test (int even?)")
+(assert:  (12 even?) "test (int even?)")
 
-(assert: ((1 << 1) == 2) "int <<,1")
-(assert: ((1 << 2) == 4) "int <<,2")
-(assert: ((1 << 100) == 0) "int <<,3")
+# odd? #
+(assert:  ((-2 odd?)!) "test (int odd?)")
+(assert:  (-3 odd?) "test (int odd?)")
+(assert:  ((12 odd?)!) "test (int odd?)")
+(assert:  (11 odd?) "test (int odd?)")
 
-">>"
-"(Int >> other(Int))"
-""
+# next #
+(assert:  ((-2 next) == -1) "test (int next)")
+(assert:  ((0 next) == 1) "test (int next)")
+(assert:  ((111111110 next) == 111111111) "test (int next)")
 
-(assert: ((4 >> 1) == 2) "int >>,1")
-(assert: ((4 >> 2) == 1) "int >>,2")
-(assert: ((4 >> 100) == 0) "int >>,3")
+# pred #
+(assert:  ((-2 pred) == -3) "test (int pred)")
+(assert:  ((0 pred) == -1) "test (int pred)")
+(assert:  ((110 pred) == 109) "test (int pred)")
 
-"~"
-"(Int ~)"
-""
-
-(assert: ((1 ~) == -2) "int ~,1")
-(assert: ((4 ~) == -5) "int ~,2")
-
-"negate"
-"(Int negate)"
-""
-
-(assert: ((-1 negate) == 1)"int negate,1")
-(assert: ((1 negate) == -1)"int negate,2")
-(assert: ((0 negate) == 0)"int negate,3")
-(assert: ((0 negate) == +0)"int negate,4")
-(assert: ((0 negate) == -0)"int negate,5")
-(assert: ((-0 negate) == 0)"int negate,6")
-(assert: ((-0 negate) == +0)"int negate,7")
-(assert: ((-0 negate) == -0)"int negate,8")
-(assert: ((+0 negate) == 0)"int negate,9")
-(assert: ((+0 negate) == +0)"int negate,10")
-(assert: ((+0 negate) == -0)"int negate,11")
-
-"even?"
-"(Int even?)"
-""
-
-(assert:  ((-1 even?)!) "int even?,1")
-(assert:  (-2 even?) "int even?,2")
-(assert:  ((11 even?)!) "int even?,3")
-(assert:  (12 even?) "int even?,4")
-
-"odd?"
-"(Int odd?)"
-""
-
-(assert:  ((-2 odd?)!) "int odd?,1")
-(assert:  (-3 odd?) "int odd?,2")
-(assert:  ((12 odd?)!) "int odd?,3")
-(assert:  (11 odd?) "int odd?,4")
-
-"next"
-"(Int next)"
-""
-
-(assert:  ((-2 next) == -1) "int next,1")
-(assert:  ((0 next) == 1) "int next,2")
-(assert:  ((111111110 next) == 111111111) "int next,3")
-
-"pred"
-"(Int pred)"
-""
-
-(assert:  ((-2 pred) == -3) "int pred,1")
-(assert:  ((0 pred) == -1) "int pred,2")
-(assert:  ((110 pred) == 109) "int pred,3")
-
-".."
-"(Int .. [end(Int)])"
-""
-
+# .. #
 (let x = (1 .. ))
-(assert: ((x type) == "Range") "int ..,1")
-(assert: ((x begin) == 1) "int ..,2")
-(assert: ((x end) == 0) "int ..,3")
+(assert: ((x type) == "Range") "test (int .. [end(int)])")
+(assert: ((x begin) == 1) "test (int .. [end(int)])")
+(assert: ((x end) == 0) "test (int .. [end(int)])")
 (let x = (1 .. 5))
-(assert: ((x type) == "Range") "int ..,4")
-(assert: ((x begin) == 1) "int ..,5")
-(assert: ((x end) == 5) "int ..,6")
+(assert: ((x type) == "Range") "test (int .. [end(int)])")
+(assert: ((x begin) == 1) "test (int .. [end(int)])")
+(assert: ((x end) == 5) "test (int .. [end(int)])")
 (let r = "")
 (x >> (|i| (r << i)))
-(assert: (r == "1234") "int ..,7")
+(assert: (r == "1234") "test (int .. [end(int)])")
 
-"times"
-"(Int times callback(Lambda))"
-""
-
+# times #
 (let x = "")
 (3 times (|i| (x << i)))
-(assert: (x == "012") "int times,7")
+(assert: (x == "012") "test (int times callback(Lambda))")
 
-"to_f"
-"(Int to_f)"
-""
-
+# to_f #
 (let x = 11)
 (let y = (x to_f))
-(assert: (y == 11.0) "int to_f,1")
-(assert: ((y type) == "Float") "int to_f,2")
+(assert: (y == 11.0) "test (int to_f)")
+(assert: ((y type) == "Float") "test (int to_f)")
 
-"to_i"
-"(Int to_i)"
-""
-
+# to_i #
 (let x = 11)
 (let y = (x to_i))
-(assert: (y == x) "int to_i,1")
-(assert: ((y type) == "Int") "int to_i,2")
+(assert: (y == x) "test (int to_i)")
+(assert: ((y type) == "Int") "test (int to_i)")
+
+
+(puts: "Int/int checkpoints all passed.")

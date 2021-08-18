@@ -1,10 +1,28 @@
-# -- nil #
-
-(puts: "puts" nil)
+# >>> module Nil #
 
 # == #
-(assert:(nil == nil) "")
-(assert:(nil == nil) "")
+(assert:(Nil == Nil) "test (Nil == Nil)")
+
+# != #
+(assert:(Nil != 1) "test (Nil != 1)")
+(assert:(Nil != nil) "test (Nil != nil)")
+
+# to_s #
+(assert:((Nil to_s) == "<module Nil>") "test (Nil to_s)")
+
+# to_b #
+(assert:((Nil to_b) == true) "test (Nil to_b)")
+
+# type #
+(assert:((Nil type) == "lambda") "test (Nil type)")
+
+# : #
+(assert:((Nil:) == nil) "test (Nil:)")
+
+# >>> value nil #
+
+# == #
+(assert:(nil == nil) "test (nil == nil)")
 
 # != #
 (assert:(nil != 1) "test (nil != 1)")
@@ -14,12 +32,9 @@
 (assert:((nil to_s) == "nil") "test (nil to_s)")
 
 # to_b #
-(assert:((nil to_b) == true) "test (nil to_b)")
+(assert:((nil to_b) == false) "test (nil to_b)")
 
 # type #
 (assert:((nil type) == "Nil") "test (nil type)")
 
-
-# -- module Nil #
-
-(puts: Nil)
+(puts: "Nil/nil checkpoints all passed.")

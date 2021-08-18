@@ -1,140 +1,148 @@
-"+"
-"(Float + other(...Int|Float)"
+# >>> module Float #
 
+# == #
+(assert:(Float == Float) "test (Float == Float)")
+
+# != #
+(assert:(Float != 1) "test (Float != 1)")
+(assert:(Float != nil) "test (Float != nil)")
+
+# to_s #
+(assert:((Float to_s) == "<module Float>") "test (Float to_s)")
+
+# to_b #
+(assert:((Float to_b) == true) "test (Float to_b)")
+
+# type #
+(assert:((Float type) == "lambda") "test (Float type)")
+
+# : #
+(assert:((Float:) == 0.0) "test (Float:)")
+
+# >>> value float #
+
+# == #
+(assert:(1.0 == 1.0) "test (1.0 == 1.0)")
+
+# != #
+(assert:(1.1 != 1) "test (1.1 != 1)")
+(assert:((1.01 != 1.01) !) "test (1.01 != 1.01)")
+
+# to_s #
+(assert:((1.1 to_s) == "1.1") "test (1.1 to_s)")
+(assert:((1.0 to_s) == "1") "test (1.0 to_s)")
+
+# to_b #
+(assert:((1.0 to_b) == true) "test (1.0 to_b)")
+
+# type #
+(assert:((1.0 type) == "Float") "test (1.0 type)")
+
+# + #
 (let x = 1.0)
 (let y = (x + 10000000000000000))
-(assert: (y == 10000000000000001.0) "float +,1")
-(assert: ((y type) == "Float") "float +,2")
+(assert: (y == 10000000000000001.0) "test (Float + other(...Int|Float)")
+(assert: ((y type) == "Float") "test (Float + other(...Int|Float)")
 (let y = (x + 1.0))
-(assert: (y == 2.0) "float +,3")
-(assert: ((y type) == "Float") "float +,4")
+(assert: (y == 2.0) "test (Float + other(...Int|Float)")
+(assert: ((y type) == "Float") "test (Float + other(...Int|Float)")
 
-"-"
-"(Float - other(...Int|Float)"
-
+# - #
 (let x = 10000.0)
 (let y = (x - 10 20))
-(assert: (y == 9970.0) "float -,1")
-(assert: ((y type) == "Float") "float -,2")
+(assert: (y == 9970.0) "test (Float - other(...Int|Float)")
+(assert: ((y type) == "Float") "test (Float - other(...Int|Float)")
 
 (let y = (x - 1.0))
-(assert: (y == 9999.0) "float -,3")
-(assert: ((y type) == "Float") "float -,4")
+(assert: (y == 9999.0) "test (Float - other(...Int|Float)")
+(assert: ((y type) == "Float") "test (Float - other(...Int|Float)")
 
-"*"
-"(Float * other(...Int|Float)"
-
+# * #
 (let x = 2)
 (let y = (x * 2 -2))
-(assert: (y == -8) "float *,1")
-(assert: ((y type) == "Int") "float *,2")
+(assert: (y == -8) "test (Float * other(...Int|Float)")
+(assert: ((y type) == "Int") "test (Float * other(...Int|Float)")
 
 (let y = (x * 2.0))
-(assert: (y == 4.0) "float *,3")
-(assert: ((y type) == "Float") "float *,4")
+(assert: (y == 4.0) "test (Float * other(...Int|Float)")
+(assert: ((y type) == "Float") "test (Float * other(...Int|Float)")
 
-"/"
-"(Float / other(...Int|Float)"
-
+# / #
 (let x = 2.0)
 (let y = (x / -1))
-(assert: (y == -2.0) "float /,1")
-(assert: ((y type) == "Float") "float /,2")
+(assert: (y == -2.0) "test (Float / other(...Int|Float)")
+(assert: ((y type) == "Float") "test (Float / other(...Int|Float)")
 (let y = (x / 2.0))
-(assert: (y == 1.0) "float /,3")
-(assert: ((y type) == "Float") "float /,4")
+(assert: (y == 1.0) "test (Float / other(...Int|Float)")
+(assert: ((y type) == "Float") "test (Float / other(...Int|Float)")
 (let y = (x / 0.5))
-(assert: (y == 4) "float /,5")
-(assert: ((y type) == "Float") "float /,6")
+(assert: (y == 4) "test (Float / other(...Int|Float)")
+(assert: ((y type) == "Float") "test (Float / other(...Int|Float)")
 
-"**"
-"(Float ** x(Int|Float)"
-
+# ** #
 (let x = 2.0)
 (let y = (x ** 3))
-(assert: (y == 8.0) "float **,1")
-(assert: ((y type) == "Float") "float **,2")
+(assert: (y == 8.0) "test (Float ** x(Int|Float)")
+(assert: ((y type) == "Float") "test (Float ** x(Int|Float)")
 (let y = (x ** -3))
-(assert: (y == 0.125) "float **,3")
-(assert: ((y type) == "Float") "float **,4")
+(assert: (y == 0.125) "test (Float ** x(Int|Float)")
+(assert: ((y type) == "Float") "test (Float ** x(Int|Float)")
 (let y = (x ** 0))
-(assert: (y == 1.0) "float **,5")
-(assert: ((y type) == "Float") "float **,6")
+(assert: (y == 1.0) "test (Float ** x(Int|Float)")
+(assert: ((y type) == "Float") "test (Float ** x(Int|Float)")
 
-">"
-"(Float > x(*)"
-"x will be transfer to Int/Float"
-
+# > #
 (let x = 2.0)
-(assert: ((x > 3.0)!) "float >,1")
-(assert: ((x > 2)!) "float >,2")
-(assert: (x > nil) "float >,3")
-(assert: ((-1.0 > nil)!) "float >,4")
-(assert: ((x > 4.5)!) "float >,5")
-(assert: (x > 1.6) "float >,6")
+(assert: ((x > 3.0)!) "test (Float > x(*)")
+(assert: ((x > 2)!) "test (Float > x(*)")
+(assert: (x > nil) "test (Float > x(*)")
+(assert: ((-1.0 > nil)!) "test (Float > x(*)")
+(assert: ((x > 4.5)!) "test (Float > x(*)")
+(assert: (x > 1.6) "test (Float > x(*)")
 
-">="
-"(Float >= x(*)"
-"x will be transfer to Int/Float"
-
+# >= #
 (let x = 2.0)
-(assert: ((x >= 3.0)!) "float >=,1")
-(assert: (x >= 2) "float >=,2")
-(assert: (x >= nil) "float >=,3")
-(assert: ((-1 >= nil)!) "float >=,4")
-(assert: ((x >= 4.5)!) "float >=,5")
-(assert: ((1 >= 1.6)!) "float >=,6")
+(assert: ((x >= 3.0)!) "test (Float >= x(*)")
+(assert: (x >= 2) "test (Float >= x(*)")
+(assert: (x >= nil) "test (Float >= x(*)")
+(assert: ((-1 >= nil)!) "test (Float >= x(*)")
+(assert: ((x >= 4.5)!) "test (Float >= x(*)")
+(assert: ((1 >= 1.6)!) "test (Float >= x(*)")
 
-"<"
-"(Float < x(*)"
-"x will be transfer to Int/Float"
-
+# < #
 (let x = 2.0)
-(assert: (x < 3) "float <,1")
-(assert: ((x < 2.0)!) "float <,2")
-(assert: (-1 < nil) "float <,3")
-(assert: (x < 4.5) "float <,5")
+(assert: (x < 3) "test (Float < x(*)")
+(assert: ((x < 2.0)!) "test (Float < x(*)")
+(assert: (-1 < nil) "test (Float < x(*)")
+(assert: (x < 4.5) "test (Float < x(*)")
 
-"<="
-"(Float <= x(*)"
-"x will be transfer to Int/Float"
-
+# <= #
 (let x = 2.0)
-(assert: (x <= 3) "float <=,1")
-(assert: (x <= 2.0) "float <=,2")
-(assert: (0 <= nil) "float <=,3")
-(assert: (x <= 4.5) "float <=,5")
+(assert: (x <= 3) "test (Float <= x(*)")
+(assert: (x <= 2.0) "test (Float <= x(*)")
+(assert: (0 <= nil) "test (Float <= x(*)")
+(assert: (x <= 4.5) "test (Float <= x(*)")
 
-"abs"
-"(Float abs)"
-""
+# abs #
+(assert: ((2.1 abs) == 2.1) "test (Float abs)")
+(assert: ((-1.2 abs) == 1.2) "test (Float abs)")
+(assert: ((0.0 abs) == 0) "test (Float abs)")
+(assert: ((-0.0 abs) == 0) "test (Float abs)")
 
-(assert: ((2.1 abs) == 2.1)"float abs,1")
-(assert: ((-1.2 abs) == 1.2) "float abs,2")
-(assert: ((0.0 abs) == 0) "float <=,3")
-(assert: ((-0.0 abs) == 0) "float <=,4")
+# negate #
+(assert: ((-1.1 negate) == 1.1) "test (Float negate)")
+(assert: ((1.2 negate) == -1.2) "test (Float negate)")
 
-"negate"
-"(Float negate)"
-""
-
-(assert: ((-1.1 negate) == 1.1)"float negate,1")
-(assert: ((1.2 negate) == -1.2)"float negate,2")
-
-"to_f"
-"(Float to_f)"
-""
-
+# to_f #
 (let x = 11.2)
 (let y = (x to_f))
-(assert: (y == 11.2) "float to_f,1")
-(assert: ((y type) == "Float") "float to_f,2")
+(assert: (y == 11.2) "test (Float to_f)")
+(assert: ((y type) == "Float") "test (Float to_f)")
 
-"to_i"
-"(Float to_i)"
-""
-
+# to_i #
 (let x = 11.8)
 (let y = (x to_i))
-(assert: (y == 11) "float to_i,1")
-(assert: ((y type) == "Int") "float to_i,2")
+(assert: (y == 11) "test (Float to_i)")
+(assert: ((y type) == "Int") "test (Float to_i)")
+
+(puts: "Float/float checkpoints all passed.")

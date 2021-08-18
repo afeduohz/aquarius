@@ -379,7 +379,7 @@ If [size](#size) < `n`, returns entire `List` copy. </br>
 If [size](#size) > `n` > 1, returns a list. </br>
 If `n` == 1, returns the last element. </br>
 If `n` < 1, returns []. </br>
-If `List` is empty, return [].
+If `List` is empty, return nil.
 ```aquarius
 (List pop [n(int)]) -> any
 ```
@@ -390,7 +390,7 @@ If [size](#size) < `n`, returns entire `List` copy. </br>
 If [size](#size) > `n` > 1, returns a list. </br>
 If `n` == 1, returns the last element. </br>
 If `n` < 1, returns []. </br>
-If `List` is empty, return [].
+If `List` is empty, return nil.
 ```aquarius
 (List shift [n(int)]) -> any
 ```
