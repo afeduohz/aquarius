@@ -1,0 +1,39 @@
+# break #
+# else #
+
+(x = 1)
+(y =
+    (for (x < 10):
+        (x = (x + 1))
+        (if (x odd?):
+            break
+        else
+            x
+        )
+    else
+        "done"
+    )
+)
+(assert: (x == 3) "test (for break)")
+(assert: (y == "done") "test (for else)")
+
+# continue #
+
+(x = 1)
+(y =
+    (for (x < 10):
+        (x = (x + 1))
+        (if (x odd?):
+            continue
+        else
+            x
+        )
+    else
+        "done"
+    )
+)
+(assert: (x == 10) "test (for continue)")
+(assert: (y == "done") "test (for else)")
+
+(puts: "for expression checkpoints all passed.")
+

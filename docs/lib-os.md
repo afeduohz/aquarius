@@ -64,19 +64,19 @@ os
 ```
 
 #### stdin
-open [File](./file.md) pointing to the standard input file descriptor.
+open [File](./lib-fs-file.md) pointing to the standard input file descriptor.
 ```aquarius
 (os stdin) -> file
 ```
 
 #### stdout
-open [File](./file.md) pointing to the standard output file descriptor.
+open [File](./lib-fs-file.md) pointing to the standard output file descriptor.
 ```aquarius
 (os stdout) -> file
 ```
 
 #### stderr
-open [File](./file.md) pointing to the standard error file descriptor.
+open [File](./lib-fs-file.md) pointing to the standard error file descriptor.
 ```aquarius
 (os stderr) -> file
 ```

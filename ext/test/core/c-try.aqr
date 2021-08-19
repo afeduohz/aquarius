@@ -1,0 +1,34 @@
+# finally return #
+(let output =
+    (try
+        (assert: (error != nil))
+    catch
+        (assert: (error != nil))
+    finally
+        "done"
+    )
+)
+(assert: (output == "done") "")
+
+# embed error #
+(let output =
+    (try
+        (try
+            (assert: (error != nil))
+        catch
+            (assert: (error != nil))
+        finally
+            (Error: "InnerError")
+        )
+    catch
+        (assert: (error != nil))
+        (assert: ((error message) == "InnerError"))
+    finally
+        "done"
+    )
+)
+(assert: (output == "done") "")
+
+
+(puts: "try expression checkpoints all passed.")
+

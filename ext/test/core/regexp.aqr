@@ -1,30 +1,90 @@
+# >>> module RegExp #
+
+# == #
+(assert:(RegExp == RegExp) "test (RegExp == RegExp)")
+
+# != #
+(assert:(RegExp != 1) "test (RegExp != 1)")
+(assert:(RegExp != nil) "test (RegExp != nil)")
+
+# to_s #
+(assert:((RegExp to_s) == "<module RegExp>") "test (RegExp to_s)")
+
+# to_b #
+(assert:((RegExp to_b) == true) "test (RegExp to_b)")
+
+# type #
+(assert:((RegExp type) == "lambda") "test (RegExp type)")
+
+# : #
+(let x = (RegExp: "^\\b$"))
+(assert:(x != nil) "test (RegExp: \"^\\b$\")")
+
+# >>> value regexp #
+
+# == #
+(let x = `^\b$`)
+(let y = `^\b$`)
+(assert: ((x == y)!) "test (`^\b$` == `^\b$`)")
+
+# != #
+(let x = `^\b$`)
+(let y = `^\b$`)
+(assert: (x != y) "test (`^\b$` != `^\b$`)")
+
+# to_s #
+(assert:((`^\b$` to_s) == "`^\\b$`") "test (`^\b$` to_s)")
+
+# to_b #
+(assert:((`^\b$` to_b) == true) "test (`^\b$` to_b)")
+
+# type #
+(assert:((`^\b$` type) == "RegExp") "test (`^\b$` type)")
+
+# match? #
 (let x = `(?i)b/c`)
-(puts: x (x type) (x match? "ab/C"))
+(let y = (x match? "ab/C"))
+(assert: y "test (regexp match?)")
 
+# expr #
 (let x = `(?i)b/c`)
-(puts: x (x expr))
+(assert: ((x expr) == "(?i)b/c") "test (regexp expr)")
 
+# groups #
 (let x = `(?P<Name1>abc)(def)(?P<Name3>ghi)`)
-(puts: x (x groups) (x names))
+(assert: ((x groups) == 3) "test (regexp groups)")
 
-"literal_prefix"
-
+# names #
 (let x = `(?P<Name1>abc)(def)(?P<Name3>ghi)`)
-(puts: x (x literal_prefix))
+(assert: (((x names) to_s) == (["" "Name1" "" "Name3"] to_s)) "test (regexp names)")
 
-"find" "longest"
+# literal_prefix #
+(let x = `(?P<Name1>abc)(def)(?P<Name3>ghi)`)
+(assert: (((x literal_prefix) to_s) == (["abcdefghi" true] to_s)) "test (regexp literal_prefix)")
 
+# longest #
+(let x = `(?U)H[\w\s]+o`)
+(x longest)
+(let y = "Hello World, 123 Go!")
+(let z = (x find y))
+(assert: (z == "Hello Wo") "test (regexp longest)")
+
+# find #
 (let x = `(?U)H[\w\s]+o`)
 (let y = "Hello World, 123 Go!")
-(puts: (x find y) (x longest) (x find y))
+(let z = (x find y))
+(assert: (z == "Hello") "test (regexp find)")
 
-"find_all"
-
+# find_all #
 (let x = `(((abc.)def.)ghi)`)
 (let y = (x find_all "abc-def-ghi abc+def+ghi"))
 (let z = (x find_all "abc-def-ghi abc+def+ghi" 1))
-(puts: x y z)
+(assert: ((y to_s) == (["abc-def-ghi" "abc+def+ghi"] to_s)) "test (regexp find_all)")
+(assert: ((z to_s) == (["abc-def-ghi"] to_s)) "test (regexp find_all)")
 
 (let x = `\`A`)
 (let y = (x find_all "THis is a `A` HERE."))
-(puts: x y (x expr))
+(assert: ((y to_s) == (["`A"] to_s)) "test (regexp find_all)")
+
+
+(puts: "RegExp/regexp checkpoints all passed.")

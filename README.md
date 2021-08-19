@@ -1,7 +1,7 @@
 Aquarius
 =
 
-![](https://img.shields.io/badge/aquarius-v0.1.7-brightgreen.svg?style=flat-square)
+![](https://img.shields.io/badge/aquarius-v0.1.8-brightgreen.svg?style=flat-square)
 ![](https://img.shields.io/github/downloads/afeduohz/aquarius/total?style=flat-square)
 ![](https://img.shields.io/github/stars/afeduohz/aquarius?style=flat-square)
 ![](https://img.shields.io/github/license/afeduohz/aquarius?style=flat-square)
@@ -51,11 +51,11 @@ lambdas are `lambda expressions`.
 Installation
 -
 
-### Latest v0.1.7
+### Latest v0.1.8
 
-+ [v0.1.7 for mac](https://github.com/afeduohz/aquarius/releases/download/v0.1.7/aquarius-v0.1.7-mac.zip)
-+ [v0.1.7 for linux](https://github.com/afeduohz/aquarius/releases/download/v0.1.7/aquarius-v0.1.7-linux.zip)
-+ [v0.1.7 for windows](https://github.com/afeduohz/aquarius/releases/download/v0.1.7/aquarius-v0.1.7-windows.zip)
++ [v0.1.8 for mac](https://github.com/afeduohz/aquarius/releases/download/v0.1.8/aquarius-v0.1.8-mac.zip)
++ [v0.1.8 for linux](https://github.com/afeduohz/aquarius/releases/download/v0.1.8/aquarius-v0.1.8-linux.zip)
++ [v0.1.8 for windows](https://github.com/afeduohz/aquarius/releases/download/v0.1.8/aquarius-v0.1.8-windows.zip)
 
 VSCode Plugin
 -
@@ -332,10 +332,7 @@ We provide basic modules/lambdas:
   + [Dict](./docs/dict.md) 
   + [RegExp](./docs/regexp.md) 
   + [Range](./docs/range.md) 
-  + [Error](./docs/error.md) 
-  + [Math](./docs/math.md) 
-  + [File](./docs/file.md) 
-  + [Time](./docs/time.md)
+  + [Error](./docs/error.md)
   + [puts](./docs/puts.md)
   + [show](./docs/show.md)
   + [noop](./docs/noop.md)
@@ -346,10 +343,12 @@ We provide basic modules/lambdas:
 In addition to those core modules, we also provide a lot of libraries for 
 you to use (and these are constantly being enriched).
 
+  + [math](./docs/lib-math.md)
   + [os](./docs/lib-os.md)
     + [Process](./docs/lib-os-process.md)
     + [ProcessState](./docs/lib-os-processstate.md)
   + [fs](./docs/lib-fs.md)
+    + [File](./docs/lib-fs-file.md)
     + [FileMode](./docs/lib-fs-filemode.md)
     + [FileInfo](./docs/lib-fs-fileinfo.md)
   + [exec](./docs/lib-exec.md)
@@ -361,6 +360,7 @@ you to use (and these are constantly being enriched).
     + [Cookie](./docs/lib-http-cookie.md)
     + [Client](./docs/lib-http-client.md)
   + [time](./docs/lib-time.md)
+    + [Time](./docs/lib-time-time.md)
     + [Duration](./docs/lib-time-duration.md)
     + [Timer](./docs/lib-time-timer.md)
     + [Ticker](./docs/lib-time-ticker.md)

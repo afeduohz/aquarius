@@ -1,11 +1,11 @@
 #base32#
 
-"decode"
+# decode #
 
 (let x = (encoding/base32 decode "GEZDGNBVGY======"))
 (assert: (x == "123456") "base32 decode,1")
 
-"encode"
+# encode #
 
 (let x = (encoding/base32 encode "123456"))
 (assert: (x == "GEZDGNBVGY======") "base32 encode,1")
@@ -13,12 +13,15 @@
 
 #base64#
 
-"decode"
+# decode #
 
 (let x = (encoding/base64 decode "MTIzNDU2"))
 (assert: (x == "123456") "base32 decode,1")
 
-"encode"
+# encode #
 
 (let x = (encoding/base64 encode "123456"))
 (assert: (x == "MTIzNDU2") "base32 encode,1")
+
+(puts: "encoding/base* checkpoints all passed.")
+

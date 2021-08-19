@@ -1,0 +1,32 @@
+(let x = 1)
+(let y =
+    (if (x > 2):
+        "big"
+    else
+        "little"
+    )
+)
+(assert: (y == "little") "test (if)")
+
+(let x = 3)
+(let y =
+    (if (x > 2):
+        x
+    )
+)
+(assert: (y == x) "test (if)")
+
+
+(let x = 2)
+(if (x > 2):
+    (y = "great")
+eif (x == 2):
+    (y = "equ")
+else
+    1
+    (y = "less")
+)
+(assert: (y == "equ") "test (if)")
+
+
+(puts: "if expression checkpoints all passed.")

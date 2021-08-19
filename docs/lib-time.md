@@ -84,7 +84,7 @@ Like [parse](#parse), but need one more parameter `localtion`.
 Returns the local Time corresponding to the given Unix time, `sec` seconds 
 and `nsec` nanoseconds since January 1, 1970 UTC. It is valid to pass `nsec` 
 outside the range [0, 999999999]. Not all `sec` values have a corresponding 
-[Time](./time.md) value. One such value is 1<<63-1 (the largest [Int](./int.md) value).
+[Time](./lib-time-time.md) value. One such value is 1<<63-1 (the largest [Int](./int.md) value).
 
 ```aquarius
 (time unix {sec}int {nsec}int) -> Time

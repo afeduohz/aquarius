@@ -1,0 +1,11 @@
+# decode #
+
+(let x = (encoding/json decode "[{\"1\": 1},  \n1, true, false, null, 0.1]"))
+(assert: ((x to_s) == ([{"1": 1} 1 true false nil 0.1] to_s)))
+
+# encode #
+
+(let x = (encoding/json encode [false nil 1 2]))
+(assert: (x == "[false,null,1,2]") )
+
+(puts: "encoding/json checkpoints all passed.")

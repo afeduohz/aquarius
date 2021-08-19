@@ -1,7 +1,7 @@
 Math
 -
 
-### The API of `Math` module:
+### The API of `math` module:
 
 + [==](#==)
 + [!=](#!=)
@@ -63,77 +63,77 @@ Math
 #### floor
 
 ```aquarius
-(Math floor i(flooat)) -> float
+(Math floor i(float)) -> float
 ```
 
 #### sin
 
 ```aquarius
-(Math sin i(flooat)) -> float
+(Math sin i(float)) -> float
 ```
 
 #### asin
 
 ```aquarius
-(Math asin i(flooat)) -> float
+(Math asin i(float)) -> float
 ```
 
 #### sinh
 
 ```aquarius
-(Math sinh i(flooat)) -> float
+(Math sinh i(float)) -> float
 ```
 
 #### asinh
 
 ```aquarius
-(Math asinh i(flooat)) -> float
+(Math asinh i(float)) -> float
 ```
 
 #### cos
 
 ```aquarius
-(Math cos i(flooat)) -> float
+(Math cos i(float)) -> float
 ```
 
 #### acos
 
 ```aquarius
-(Math acos i(flooat)) -> float
+(Math acos i(float)) -> float
 ```
 
 #### cosh
 
 ```aquarius
-(Math cosh i(flooat)) -> float
+(Math cosh i(float)) -> float
 ```
 
 #### acosh
 
 ```aquarius
-(Math acosh i(flooat)) -> float
+(Math acosh i(float)) -> float
 ```
 
 #### tan
 
 ```aquarius
-(Math tan i(flooat)) -> float
+(Math tan i(float)) -> float
 ```
 
 #### atan
 
 ```aquarius
-(Math atan i(flooat)) -> float
+(Math atan i(float)) -> float
 ```
 
 #### tanh
 
 ```aquarius
-(Math tanh i(flooat)) -> float
+(Math tanh i(float)) -> float
 ```
 
 #### atanh
 
 ```aquarius
-(Math atanh i(flooat)) -> float
+(Math atanh i(float)) -> float
 ```

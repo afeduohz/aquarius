@@ -1,7 +1,7 @@
-File
+fs/File
 -
 
-### The API of `File` module:
+### The API of `fs/File` module:
 
 + [==](#==)
 + [!=](#!=)

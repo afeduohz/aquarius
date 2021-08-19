@@ -86,7 +86,7 @@ Returns file mode [fs/FileMode](lib-fs-filemode.md) bits.
 
 #### modified_time
 
-Returns modification time [Time](time.md).
+Returns modification time [Time](lib-time-time.md).
 
 ```aquarius
 (info modified_time) -> time

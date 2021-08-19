@@ -1,7 +1,7 @@
-Time
+time/Time
 -
 
-### The API of `Time` module:
+### The API of `time/Time` module:
 
 + [==](#==)
 + [!=](#!=)
