@@ -1,5 +1,4 @@
-(require kindergarten/girl)
-(let Girl = kindergarten/girl)
+(require examples/kindergarten/girl as Girl)
 
 (let input = args)
 

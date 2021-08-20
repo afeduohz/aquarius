@@ -1,251 +1,280 @@
+# >>> module Dict #
 
-(let x = { "a": 1 "b": 2})
-(puts: x (x type))
+# == #
+(assert:(Dict == Dict) "test (Dict == Dict)")
 
-"--<<--"
+# != #
+(assert:(Dict != 1) "test (Dict != 1)")
+(assert:(Dict != nil) "test (Dict != nil)")
 
+# to_s #
+(assert:((Dict to_s) == "<module Dict>") "test (Dict to_s)")
+
+# to_b #
+(assert:((Dict to_b) == true) "test (Dict to_b)")
+
+# type #
+(assert:((Dict type) == "lambda") "test (Dict type)")
+
+# : #
+(assert:((Dict:) != nil) "test (Dict:)")
+
+# >>> value dict #
+
+# == #
+(assert:(({} == {})!) "test ({} == {})")
+
+# != #
+(assert:({} != {}) "test ({} != {})")
+
+# to_s #
+(assert:(({} to_s) == "{}") "test ({} to_s)")
+
+# to_b #
+(assert:(({} to_b) == true) "test ({} to_b)")
+
+# type #
+(assert:(({} type) == "Dict") "test ({} type)")
+
+# << #
 (let x = {})
 (x << "x")
+(assert:((x key? "x") & ((x fetch "x") == nil)) "test (dict <<)")
 (x << "y" 1)
+(assert:((x key? "y") & ((x fetch "y") == 1)) "test (dict <<)")
 (x << "z" nil)
+(assert:((x key? "z") & ((x fetch "z") == nil)) "test (dict <<)")
 (x << "t" true)
+(assert:((x key? "t") & (x fetch "t")) "test (dict <<)")
 (x << "f" [1 false])
+(assert:((x key? "f") & (((x fetch "f") to_s) == ([1 false] to_s))) "test (dict <<)")
 (x << "r" {"name": "george"})
-(puts: x)
+(assert:((x key? "r") & (((x fetch "r") to_s) == ({"name": "george"} to_s))) "test (dict <<)")
 
-"--any?--"
-
+# any? #
 (let x = {})
 (let y = (x any?))
-(puts: x y)
-
+(assert: (y !) "test (dict any?)")
 (let x = {"1": nil "2": nil "3": nil})
 (let y = (x any?))
-(puts: x y)
-
+(assert: (y !) "test (dict any?)")
 (let x = {"empty": 1})
 (let y = (x any?))
-(puts: x y)
-
-(let f = (|k (v = false)|(puts:v)v))
+(assert: y "test (dict any?)")
+(let f = (|k (v = false)|v))
 (let x = {"func": 1})
 (let y = (x any? f))
-(puts: x y)
+(assert: y "test (dict any?)")
 
-"--all?--"
-
+# all? #
 (let x = {})
 (let y = (x all?))
-(puts: x y)
-
+(assert: y "test (dict all?)")
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x all?))
-(puts: x y)
-
+(assert: (y !) "test (dict all?)")
 (let f = (|k|k))
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x all? f))
-(puts: x y)
+(assert: y "test (dict all?)")
 
-"--clear--"
-
+# clear #
 (let x = {"1": 1 "2": 2 "3": nil})
-(puts: x (x size) (x clear) (x size))
+(x clear)
+(assert:((x to_s) == ({} to_s)) "test (dict clear)")
+(assert:((x size) == 0) "test (dict clear)")
 
-"--clone--"
-
-(let x = {"1": 1 "2": 2 "3": nil})
+# clone #
+(let x = {"1": 1})
 (let y = (x clone))
-(puts: x y (x == y))
+(assert:((x to_s) == (y to_s)) "test (dict clone)")
 
-"--delete--"
-
+# delete #
 (let x = {"1": 1 "2": 2 "3": nil})
-(puts: x (x size))
+(assert:((x size) == 3) "test (dict delete)")
 (let y = (x delete "d"))
-(puts: x (x size) y)
-
+(assert:((x size) == 3) "test (dict delete)")
+(assert:(y == nil) "test (dict delete)")
 (let x = {"1": 1 "2": 2 "3": nil})
-(puts: x (x size))
 (let y = (x delete "2"))
-(puts: x (x size) y)
+(assert:((x size) == 2) "test (dict delete)")
+(assert: (y == 2) "test (dict delete)")
 
-"--delete_if--"
-
+# delete_if #
 (let f = (|k v|(v == 1)))
 (let x = {"1": 1 "2": 2 "3": nil})
-(puts: x (x size))
+(assert:((x size) == 3) "test (dict delete_if)")
 (let y = (x delete_if f))
-(puts: x (x size) y )
+(assert:((y size) == 2) "test (dict delete_if)")
+(assert:((y key? "1") !) "test (dict delete_if)")
 
-"--each--"
-
-(let f = (|k v|(puts: k "->" v)))
+# each #
 (let x = {"1": 1 "2": 2 "3": nil})
+(let f = (|k v|(assert: ((x fetch k) == v))))
 (x each f)
 
-"--empty?--"
-
+# empty? #
 (let x = {"1": 1 "2": 2 "3": nil})
-(puts: (x empty?) ({} empty?))
+(assert:((x empty?)!) "test (dict empty?)")
+(assert:({} empty?) "test (dict empty?)")
 
-"--fetch--"
-
+# fetch #
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x fetch "1"))
-(puts: x y)
-
+(assert:(y == 1) "test (dict fetch)")
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x fetch "4" "NOT_FOUND"))
-(puts: x y)
-
+(assert:(y == "NOT_FOUND") "test (dict fetch)")
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x fetch "2" "FOUND"))
-(puts: x y)
-
+(assert:(y == 2) "test (dict fetch)")
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x fetch "2" (|k v| (k + v))))
-(puts: x y)
+(assert:(y == "22") "test (dict fetch)")
 
-"--keep_if--"
-
+# keep_if #
 (let f = (|k v|(v == 1)))
 (let x = {"1": 1 "2": 2 "3": nil})
-(puts: x (x size))
 (let y = (x keep_if f))
-(puts: x (x size) y )
+(assert:(({"1": 1} to_s) == (y to_s)) "test (dict keep_if)")
 
-"--key--"
-
+# key #
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x key 1))
-(puts: x (x key 1) (x key 2) (x key true) (x key nil))
+(assert:(y == "1") "test (dict key)")
+(let y = (x key true))
+(assert:(y == nil) "test (dict key)")
+(let y = (x key nil))
+(assert:(y == "3") "test (dict key)")
 
-"--keys--"
-
+# keys #
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x keys))
-(puts: x y )
-
+(assert:((y size) == 3) "test (dict keys)")
 (let x = {})
 (let y = (x keys))
-(puts: x y )
+(assert:((y to_s) == ([] to_s)) "test (dict keys)")
 
-"--size--"
+# size #
+(assert:(({} size) == 0) "test (dict size)")
+(assert:(({"1": 1 "2": 2 "3": nil} size) == 3) "test (dict size)")
 
-(puts: ({} size) ({"1": 1 "2": 2 "3": nil} size))
-
-"--key? member? include?--"
-
+# key? member? include? #
 (let x = {"1": 1 "2": 2 "3": nil})
-(puts: ({} key? "1") (x member? "z") (x include? "2"))
+(assert:(({} key? "1") !) "test (dict key?)")
+(assert:((x member? "z") !) "test (dict member?)")
+(assert: (x include? "2") "test (dict include?)")
 
-"--merge--"
-
-(let x = {"1": 1 "2": 2 "3": nil})
+# merge #
+(let x = {"1": 1})
 (let y = {})
 (let z = {"name": "george"})
 (let y1 = (x merge y))
+(assert:((y1 size) == 1) "test (dict merge)")
 (let z1 = (x merge z))
-(puts: x y z y1 z1 (x == y1) (x == z1))
-
-(let x = {"1": 1 "2": 2 "3": nil})
+(assert:((z1 size) == 2) "test (dict merge)")
+(let x = {"1": 1})
 (let y = {"1": "one"})
 (let z = (x merge y))
-(puts: x y z)
-
+(assert:((z size) == 1) "test (dict merge)")
+(assert:((z fetch "1") == "one") "test (dict merge)")
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = {"1": "one"})
-(let z = (x merge y (|k o n| (puts: k o n) (k + n o))))
-(puts: x y z)
+(let z = (x merge y (|k o n|(k + n o))))
+(assert:((z fetch "1") == "11one") "test (dict merge)")
 
-"--merge!--"
-
-(let x = {"1": 1 "2": 2 "3": nil})
+# merge! #
+(let x = {"1": 1})
 (let y = {})
 (let z = (x merge! y))
-(puts: x y z (z == x))
-
+(assert: (z == x) "test (dict merge!)")
+(assert:((x size) == 1) "test (dict merge!)")
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = {"name": "george"})
 (let z = (x merge! y))
-(puts: x y z (z == x))
-
+(assert: (z == x) "test (dict merge!)")
+(assert: ((x fetch "name") == "george") "test (dict merge!)")
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = {"1": "one"})
 (let z = (x merge! y))
-(puts: x y z)
-
+(assert: (z == x) "test (dict merge!)")
+(assert:((z fetch "1") == "one") "test (dict merge!)")
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = {"1": "one"})
-(let z = (x merge! y (|k o n| (puts: k o n) (k + n o))))
-(puts: x y z)
+(let z = (x merge! y (|k o n|(k + n o))))
+(assert: (z == x) "test (dict merge!)")
+(assert:((z fetch "1") == "1one1") "test (dict merge!)")
 
-"--replace--"
-
+# replace #
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x replace {}))
-(puts: x y (x == y))
+(assert: (y == x) "test (dict replace)")
+(assert: ((y to_s) == ({} to_s)) "test (dict replace)")
 
-"--reject--"
-
+# reject #
 (let f = (|k v|(v == 1)))
-(let x = {"1": 1 "2": 2 "3": nil})
+(let x = {"1": 1})
 (let y = (x reject f))
-(puts: x y (x == y))
+(assert: ((y to_s) == ({} to_s)) "test (dict reject)")
+(assert: (y != x) "test (dict reject)")
 
-"--reject!--"
-
+# reject! #
 (let f = (|k v|(v == 1)))
-(let x = {"1": 1 "2": 2 "3": nil})
+(let x = {"1": 1})
 (let y = (x reject! f))
-(puts: x y (x == y))
+(assert: ((y to_s) == ({} to_s)) "test (dict reject!)")
+(assert: (y == x) "test (dict reject!)")
 
-"--select--"
-
+# select #
 (let f = (|k v|(v == 1)))
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x select f))
-(puts: x y (x == y))
+(assert: ((y to_s) == ({"1": 1} to_s)) "test (dict select)")
+(assert: (y != x) "test (dict select)")
 
-"--select!--"
-
+# select! #
 (let f = (|k v|(v == 1)))
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x select! f))
-(puts: x y (x == y))
+(assert: ((y to_s) == ({"1": 1} to_s)) "test (dict select!)")
+(assert: (y == x) "test (dict select!)")
 
-"--shift--"
-
+# shift #
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x shift))
-(puts: x y (x == y))
+(assert: (y != x) "test (dict shift)")
 (let y = (x shift))
-(puts: x y (x == y))
+(assert: (y != x) "test (dict shift)")
 (let y = (x shift))
-(puts: x y (x == y))
+(assert: (y != x) "test (dict shift)")
 (let y = (x shift))
-(puts: x y (x == y))
+(assert: (y == nil) "test (dict shift)")
 
-"--to_l--"
-
+# to_l #
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x to_l))
-(puts: x y)
+(assert:((y type) == "List") "test (dict to_l)")
+(let z = (y @ 0))
+(assert:((z type) == "List") "test (dict to_l)")
+(assert:((z size) == 2) "test (dict to_l)")
 
-"--value?--"
-
+# value? #
 (let x = {"1": 1 "2": 2 "3": nil})
-(puts: x (x value? 1) (x value? "1") (x value? nil))
+(assert:(x value? 1) "test (dict value?)")
+(assert:((x value? "1")!) "test (dict value?)")
+(assert:(x value? nil) "test (dict value?)")
 
-"--values--"
-
+# values #
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x values))
-(puts: x y)
+(assert:((y size) == 3) "test (dict values)")
 
-"--values@--"
-
+# values@ #
 (let x = {"1": 1 "2": 2 "3": nil})
 (let y = (x values@ "s" "name" "1"))
-(puts: x y)
+(assert:((y size) == 3) "test (dict values@)")
+(assert:((y @ 0) == nil) "test (dict values@)")
+(assert:((y @ 1) == nil) "test (dict values@)")
+(assert:((y @ 2) == 1) "test (dict values@)")
+
+(puts: "Dict/dict checkpoints all passed.")

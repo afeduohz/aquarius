@@ -7,7 +7,7 @@ Aquarius
 ![](https://img.shields.io/github/license/afeduohz/aquarius?style=flat-square)
 
 ```aquarius
-(show: "aquarius" "is" "a" "funny" "script")
+(show: "aquarius" "is" "a" "fun" "script")
 ```
 
 Table of Contents
