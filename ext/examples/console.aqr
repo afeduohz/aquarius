@@ -1,14 +1,28 @@
+(let dict = {
+    "j": "wo shi fei chang bang de, ni ye shi."
+    "k": "jin tian de tian qi bu cuo."
+})
 (let x =
     (|word|
         (if (word == "bye"):
-            (show: "aqr>" "seen you, bro. :]")
+            (show: "aqr> " "See you :D")
         else
-            (show: "you>" word)
+            (show: "you> " word)
+            (expr = (RegExp: word))
+            (matched =
+                (dict select (|k v| ((expr match? k) | (expr match? v))))
+            )
+            (if ((matched size) > 0):
+                (matched each (|_ k| (show: "aqr> " k)))
+            else
+                (show: "aqr> Not found")
+            )
             true
         )
     )
 )
 
-(show: "Say something :)")
-(show: "if you have no words anymore, please say bye...")
-((os stdin) read x)
+(show: "Dict Query :P")
+(show: "1) Put any words, which be regexp of 'golang style'.")
+(show: "2) Say `bye` to exit.")
+((os stdin) read_line x)
