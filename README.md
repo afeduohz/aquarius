@@ -1,7 +1,7 @@
 Aquarius
 =
 
-![](https://img.shields.io/badge/aquarius-v0.1.10-brightgreen.svg?style=flat-square)
+![](https://img.shields.io/badge/aquarius-v0.1.11-brightgreen.svg?style=flat-square)
 ![](https://img.shields.io/github/downloads/afeduohz/aquarius/total?style=flat-square)
 ![](https://img.shields.io/github/stars/afeduohz/aquarius?style=flat-square)
 ![](https://img.shields.io/github/license/afeduohz/aquarius?style=flat-square)
@@ -51,11 +51,11 @@ lambdas are `lambda expressions`.
 Installation
 -
 
-### Latest v0.1.10
+### Latest v0.1.11
 
-+ [aquarius.0.1.10.darwin.arm64](https://github.com/afeduohz/aquarius/releases/download/v0.1.10/aquarius-v0.1.10-mac.zip)
-+ [aquarius.0.1.10.linux.amd64](https://github.com/afeduohz/aquarius/releases/download/v0.1.10/aquarius-v0.1.10-linux.zip)
-+ [aquarius.0.1.10.windows.amd64](https://github.com/afeduohz/aquarius/releases/download/v0.1.10/aquarius-v0.1.10-windows.zip)
++ [aquarius.0.1.11.darwin.arm64](https://github.com/afeduohz/aquarius/releases/download/v0.1.11/aquarius-v0.1.11-mac.zip)
++ [aquarius.0.1.11.linux.amd64](https://github.com/afeduohz/aquarius/releases/download/v0.1.11/aquarius-v0.1.11-linux.zip)
++ [aquarius.0.1.11.windows.amd64](https://github.com/afeduohz/aquarius/releases/download/v0.1.11/aquarius-v0.1.11-windows.zip)
 
 VSCode Plugin
 -
@@ -75,8 +75,10 @@ Reserved
 
 |type|words|
 |----|-----|
-|keywords| if eif else for try catch finally break continue let require as true false nil error self args lambda |
-|names|puts show noop assert os time Nil String True False Error RegExp Range List Dict Int Float Math File Time|
+|keywords|if eif else for try catch finally break continue let require as|
+|names|true false nil error self args lambda|
+|lambdas|puts show noop assert|
+|modules|Nil String True False Error RegExp Range List Dict Int Float|
 
 Components
 -
@@ -383,12 +385,11 @@ Hope you feel free to dive in.
 
 Proposal
 -
-+ name definitions are not in the same convention, both camel case and underscore case.
-+ Byte type
++ x/log
++ x/terminal
++ Byte module
 + I/O abstraction
 + coroutine
-+ log
-+ file system ops enhancements
 
 License
 -
