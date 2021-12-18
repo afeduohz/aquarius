@@ -1,9 +1,0 @@
-(require examples/kindergarten/boy as Boy)
-
-(let jim = (Boy: "jim" 5))
-(let tom = (Boy: "tom" 6))
-
-(jim Say (tom @name))
-(tom Say (jim @name))
-
-(puts: (Boy == examples/kindergarten/boy))
